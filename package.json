@@ -1,0 +1,9 @@
+{
+  "name": "cvpro-ai",
+  "version": "1.0.0",
+  "description": "Professional CV Builder with AI",
+  "private": true,
+  "engines": {
+    "node": "18.x"
+  }
+}

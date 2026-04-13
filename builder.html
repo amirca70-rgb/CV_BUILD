@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منشئ السيرة الذاتية — CVPro AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/builder.css" />
+  <!-- PDF Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="builder-body">
+
+  <!-- HEADER -->
+  <header class="builder-header">
+    <div class="builder-header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">CVPro <em>AI</em></span>
+      </a>
+      <div class="header-steps">
+        <div class="hstep active" data-step="1">
+          <span class="hstep-num">1</span>
+          <span class="hstep-label">المعيار والقالب</span>
+        </div>
+        <div class="hstep" data-step="2">
+          <span class="hstep-num">2</span>
+          <span class="hstep-label">البيانات الشخصية</span>
+        </div>
+        <div class="hstep" data-step="3">
+          <span class="hstep-num">3</span>
+          <span class="hstep-label">الخبرات والمهارات</span>
+        </div>
+        <div class="hstep" data-step="4">
+          <span class="hstep-num">4</span>
+          <span class="hstep-label">المراجعة والتصدير</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-outline-sm" id="saveDraft">حفظ مسودة</button>
+        <button class="btn-gold-sm" id="exportBtn" style="display:none">تصدير PDF ↓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BUILDER -->
+  <main class="builder-main">
+
+    <!-- STEP 1: Choose Standard & Template -->
+    <div class="step-panel active" id="step1">
+      <div class="step-container">
+        <div class="step-header">
+          <h2>اختر المعيار الدولي</h2>
+          <p>اختر المعيار المناسب لبلد الهدف — سيتكيف القالب والمحتوى تلقائياً</p>
+        </div>
+
+        <div class="standard-selector">
+          <label class="standard-option" data-standard="europass">
+            <input type="radio" name="standard" value="europass" />
+            <div class="standard-option-inner">
+              <span class="s-flag">🇪🇺</span>
+              <div>
+                <strong>Europass CV</strong>
+                <small>أوروبا — 32 دولة</small>
+              </div>
+              <span class="s-check">✓</span>
+            </div>
+          </label>
+          <label class="standard-option" data-standard="canadian">
+            <input type="radio" name="standard" value="canadian" />
+            <div class="standard-option-inner">
+              <span class="s-flag">🇨🇦</span>
+              <div>
+                <strong>Canadian Resume</strong>
+                <small>كندا — ATS Optimized</small>
+              </div>
+              <span class="s-check">✓</span>
+            </div>
+          </label>
+          <label class="standard-option" data-standard="british">
+            <input type="radio" name="standard" value="british" />
+            <div class="standard-option-inner">
+              <span class="s-flag">🇬🇧</span>
+              <div>
+                <strong>British CV</strong>
+                <small>المملكة المتحدة</small>
+              </div>
+              <span class="s-check">✓</span>
+            </div>
+          </label>
+          <label class="standard-option" data-standard="american">
+            <input type="radio" name="standard" value="american" />
+            <div class="standard-option-inner">
+              <span class="s-flag">🇺🇸</span>
+              <div>
+                <strong>American Resume</strong>
+                <small>الولايات المتحدة</small>
+              </div>
+              <span class="s-check">✓</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="step-header" style="margin-top: 50px;">
+          <h2>اختر اللغة</h2>
+        </div>
+        <div class="lang-selector">
+          <label class="lang-option">
+            <input type="radio" name="cvlang" value="english" checked />
+            <span>🇬🇧 English</span>
+          </label>
+          <label class="lang-option">
+            <input type="radio" name="cvlang" value="french" />
+            <span>🇫🇷 Français</span>
+          </label>
+          <label class="lang-option">
+            <input type="radio" name="cvlang" value="arabic" />
+            <span>🇸🇦 العربية</span>
+          </label>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-primary" id="goStep2" disabled>التالي: البيانات الشخصية →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Personal Info -->
+    <div class="step-panel" id="step2">
+      <div class="step-container wide">
+        <div class="step-header">
+          <h2>البيانات الشخصية</h2>
+          <p>أدخل معلوماتك الأساسية</p>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>الاسم الأول *</label>
+            <input type="text" id="firstName" placeholder="أحمد / Ahmed" />
+          </div>
+          <div class="form-group">
+            <label>اسم العائلة *</label>
+            <input type="text" id="lastName" placeholder="المحمدي / Al-Muhammadi" />
+          </div>
+          <div class="form-group">
+            <label>المسمى الوظيفي *</label>
+            <input type="text" id="jobTitle" placeholder="مهندس برمجيات / Software Engineer" />
+            <div class="ai-suggestion" id="titleSuggestion"></div>
+          </div>
+          <div class="form-group">
+            <label>البريد الإلكتروني *</label>
+            <input type="email" id="email" placeholder="ahmed@example.com" />
+          </div>
+          <div class="form-group">
+            <label>رقم الهاتف</label>
+            <input type="tel" id="phone" placeholder="+1 416 555 0100" />
+          </div>
+          <div class="form-group">
+            <label>المدينة / الدولة</label>
+            <input type="text" id="location" placeholder="Toronto, Canada" />
+          </div>
+          <div class="form-group">
+            <label>LinkedIn</label>
+            <input type="url" id="linkedin" placeholder="linkedin.com/in/ahmed" />
+          </div>
+          <div class="form-group">
+            <label>موقع شخصي / GitHub</label>
+            <input type="url" id="website" placeholder="github.com/ahmed" />
+          </div>
+        </div>
+
+        <!-- AI Summary Generator -->
+        <div class="ai-section">
+          <div class="ai-section-header">
+            <span class="ai-icon">🤖</span>
+            <div>
+              <h3>الملخص المهني — بمساعدة AI</h3>
+              <p>أخبرني عن نفسك وسأكتب ملخصاً احترافياً</p>
+            </div>
+          </div>
+          <div class="ai-input-area">
+            <textarea id="userInput" placeholder="مثال: خبرة 5 سنوات في هندسة البرمجيات، متخصص في React وNode.js، عملت في شركات ناشئة، أبحث عن فرصة في كندا..." rows="3"></textarea>
+            <button class="ai-generate-btn" id="generateSummary">
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">توليد الملخص بالـ AI</span>
+              <span class="btn-loading" style="display:none">جاري الكتابة...</span>
+            </button>
+          </div>
+          <div class="ai-result" id="summaryResult" style="display:none">
+            <div class="ai-result-header">
+              <span>✓ الملخص المُولَّد:</span>
+              <button class="regenerate-btn" id="regenerateSummary">↻ إعادة التوليد</button>
+            </div>
+            <div class="ai-result-text" id="summaryText" contenteditable="true"></div>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-outline" onclick="goToStep(1)">← السابق</button>
+          <button class="btn-primary" onclick="goToStep(3)">التالي: الخبرات والمهارات →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Experience & Skills -->
+    <div class="step-panel" id="step3">
+      <div class="step-container wide">
+        <div class="step-header">
+          <h2>الخبرات والمهارات</h2>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section-block">
+          <div class="section-block-header">
+            <h3>💼 الخبرة العملية</h3>
+            <button class="add-btn" id="addExp">+ إضافة خبرة</button>
+          </div>
+          <div id="expList" class="items-list"></div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="section-block">
+          <div class="section-block-header">
+            <h3>🎓 التعليم</h3>
+            <button class="add-btn" id="addEdu">+ إضافة شهادة</button>
+          </div>
+          <div id="eduList" class="items-list"></div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section-block">
+          <div class="section-block-header">
+            <h3>🛠 المهارات</h3>
+            <button class="add-btn" id="addSkill">+ إضافة مهارة</button>
+          </div>
+          <div id="skillList" class="skills-grid"></div>
+
+          <!-- AI Skills Suggest -->
+          <div class="ai-skills-suggest">
+            <button class="ai-mini-btn" id="suggestSkills">⚡ اقتراح مهارات بالـ AI</button>
+            <div id="skillSuggestions" class="skill-tags" style="display:none"></div>
+          </div>
+        </div>
+
+        <!-- LANGUAGES (for Europass) -->
+        <div class="section-block" id="languagesSection">
+          <div class="section-block-header">
+            <h3>🌐 اللغات</h3>
+            <button class="add-btn" id="addLang">+ إضافة لغة</button>
+          </div>
+          <div id="langList" class="items-list"></div>
+        </div>
+
+        <div class="step-actions">
+          <button class="btn-outline" onclick="goToStep(2)">← السابق</button>
+          <button class="btn-primary" onclick="goToStep(4)">التالي: المراجعة والتصدير →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Preview & Export -->
+    <div class="step-panel" id="step4">
+      <div class="preview-layout">
+        <!-- LEFT: Controls -->
+        <div class="preview-controls">
+          <h3>الإجراءات</h3>
+
+          <div class="control-group">
+            <label>نمط الألوان</label>
+            <div class="color-presets">
+              <button class="color-btn active" data-color="#1a3a5c" style="background:#1a3a5c"></button>
+              <button class="color-btn" data-color="#2d4a2d" style="background:#2d4a2d"></button>
+              <button class="color-btn" data-color="#4a1a1a" style="background:#4a1a1a"></button>
+              <button class="color-btn" data-color="#3a2a5c" style="background:#3a2a5c"></button>
+              <button class="color-btn" data-color="#1a1a1a" style="background:#1a1a1a"></button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>تحسين نقاط محددة بالـ AI</label>
+            <textarea id="improveInput" placeholder="ما الذي تريد تحسينه؟ مثال: اجعل الخبرة الأولى أكثر تأثيراً..." rows="3"></textarea>
+            <button class="ai-mini-btn full" id="improveBtn">⚡ تطبيق التحسين</button>
+          </div>
+
+          <div class="control-group">
+            <label>ATS Score</label>
+            <div class="ats-score" id="atsScore">
+              <div class="score-circle">
+                <span id="scoreNum">0</span>
+                <small>/ 100</small>
+              </div>
+              <div class="score-tips" id="scoreTips"></div>
+            </div>
+            <button class="btn-outline-full" id="calcATS">حساب ATS Score ⚡</button>
+          </div>
+
+          <div class="control-group">
+            <button class="btn-gold-full" id="exportPDF">
+              <span>📄</span> تصدير PDF
+            </button>
+            <button class="btn-outline-full" id="copyText">
+              <span>📋</span> نسخ النص
+            </button>
+          </div>
+
+          <button class="btn-outline-full" onclick="goToStep(3)">← تعديل البيانات</button>
+        </div>
+
+        <!-- RIGHT: CV Preview -->
+        <div class="preview-area">
+          <div class="preview-toolbar">
+            <span>معاينة</span>
+            <div class="zoom-controls">
+              <button id="zoomOut">−</button>
+              <span id="zoomLevel">100%</span>
+              <button id="zoomIn">+</button>
+            </div>
+          </div>
+          <div class="preview-scroll">
+            <div class="cv-preview" id="cvPreview">
+              <!-- CV rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- EXPERIENCE MODAL -->
+  <div class="modal-overlay" id="expModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>إضافة خبرة عملية</h3>
+        <button class="modal-close" onclick="closeModal('expModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>المسمى الوظيفي *</label>
+          <input type="text" id="expTitle" placeholder="Software Engineer" />
+        </div>
+        <div class="form-group">
+          <label>اسم الشركة *</label>
+          <input type="text" id="expCompany" placeholder="Google Inc." />
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>تاريخ البداية</label>
+            <input type="month" id="expStart" />
+          </div>
+          <div class="form-group">
+            <label>تاريخ الانتهاء</label>
+            <input type="month" id="expEnd" />
+            <label class="checkbox-label">
+              <input type="checkbox" id="expCurrent" />
+              <span>لا يزال حالياً</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>المهام والإنجازات</label>
+          <textarea id="expDesc" rows="4" placeholder="اشرح مهامك وإنجازاتك..."></textarea>
+        </div>
+        <div class="ai-enhance">
+          <button class="ai-mini-btn full" id="enhanceExp">⚡ صياغة احترافية بالـ AI</button>
+          <div id="expEnhanced" style="display:none" class="ai-result-text" contenteditable="true"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('expModal')">إلغاء</button>
+        <button class="btn-primary" id="saveExp">حفظ الخبرة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION MODAL -->
+  <div class="modal-overlay" id="eduModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>إضافة شهادة تعليمية</h3>
+        <button class="modal-close" onclick="closeModal('eduModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>الشهادة / الدرجة *</label>
+          <input type="text" id="eduDegree" placeholder="Bachelor of Science in Computer Science" />
+        </div>
+        <div class="form-group">
+          <label>اسم الجامعة / المؤسسة *</label>
+          <input type="text" id="eduInstitution" placeholder="University of Toronto" />
+        </div>
+        <div class="form-group">
+          <label>الدولة</label>
+          <input type="text" id="eduCountry" placeholder="Canada" />
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>سنة البداية</label>
+            <input type="number" id="eduStart" placeholder="2018" min="1970" max="2030" />
+          </div>
+          <div class="form-group">
+            <label>سنة التخرج</label>
+            <input type="number" id="eduEnd" placeholder="2022" min="1970" max="2030" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>المعدل / الإنجازات (اختياري)</label>
+          <input type="text" id="eduGrade" placeholder="GPA: 3.8/4.0 — Honors" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('eduModal')">إلغاء</button>
+        <button class="btn-primary" id="saveEdu">حفظ الشهادة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- API KEY SETUP MODAL -->
+  <div class="modal-overlay" id="apiModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>🔑 إعداد مفتاح Anthropic API</h3>
+        <button class="modal-close" onclick="closeModal('apiModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-muted); margin-bottom:16px; line-height:1.7;">
+          لاستخدام ميزات الذكاء الاصطناعي، تحتاج إلى مفتاح API من Anthropic.
+          <a href="https://console.anthropic.com" target="_blank" style="color:var(--gold)">احصل عليه هنا ←</a>
+        </p>
+        <div class="form-group">
+          <label>مفتاح API</label>
+          <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." />
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted);">يُحفظ المفتاح محلياً على جهازك فقط ولا يُرسل لأي خادم.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('apiModal')">إلغاء</button>
+        <button class="btn-primary" id="saveApiKey">حفظ المفتاح</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ai-engine.js"></script>
+  <script src="js/builder.js"></script>
+</body>
+</html>
