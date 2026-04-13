@@ -1,9 +1,13 @@
 {
-  "name": "cvpro-ai",
-  "version": "1.0.0",
-  "description": "Professional CV Builder with AI",
-  "private": true,
+  "name": "cv_build",
+  "version": "0.1.0",
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+    // ... بقية المكتبات
+  },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
