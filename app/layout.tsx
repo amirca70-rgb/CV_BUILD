@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
-import "./globals.css"; // Ensure you have a globals.css file in the same folder
+import Script from "next/script"; // Important: Use Next.js Script component
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI Resume Builder | Professional CV",
-  description: "Create your professional resume using AI for free.",
+  title: "AI Resume Builder | Free Professional CV",
+  description: "Create your winning resume with AI in seconds.",
 };
 
 export default function RootLayout({
@@ -18,12 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google AdSense Integration */}
+        {/* Adsterra Monetization Script */}
         <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8426154327452613"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
+          src="https://pl29138792.profitablecpmratenetwork.com/cf/de/f6/cfdef67649704ea0630a71981e572443.js"
+          strategy="lazyOnload" // Loads after the page is fully interactive for better SEO
         />
       </head>
       <body className={inter.className}>
