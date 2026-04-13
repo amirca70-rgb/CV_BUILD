@@ -1,32 +1,53 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script"; // Important: Use Next.js Script component
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "AI Resume Builder | Free Professional CV",
-  description: "Create your winning resume with AI in seconds.",
-};
+  title: 'Free AI Resume Builder - Professional Summaries in Seconds',
+  description: 'Generate professional AI-powered resume summaries instantly. Create compelling career profiles in English or Arabic with our intelligent resume builder.',
+  keywords: ['resume builder', 'AI resume', 'CV builder', 'professional summary', 'job profile', 'career'],
+  authors: [{ name: 'CV Resume Builder' }],
+  viewport: 'width=device-width, initial-scale=1.0',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Free AI Resume Builder - Professional Summaries in Seconds',
+    description: 'Generate professional AI-powered resume summaries instantly.',
+    url: 'https://cvbuilder.example.com',
+    siteName: 'AI Resume Builder',
+    images: [
+      {
+        url: 'https://cvbuilder.example.com/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free AI Resume Builder',
+    description: 'Generate professional AI-powered resume summaries instantly.',
+  },
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Adsterra Monetization Script */}
-        <Script
-          src="https://pl29138792.profitablecpmratenetwork.com/cf/de/f6/cfdef67649704ea0630a71981e572443.js"
-          strategy="lazyOnload" // Loads after the page is fully interactive for better SEO
+        <meta charSet="utf-8" />
+        <meta name="theme-color" content="#667eea" />
+        <script
+          async
+          src="https://lentattire.com/cf/de/f6/cfdef67649704ea0630a71981e572443.js"
         />
       </head>
-      <body className={inter.className}>
+      <body className="bg-gradient-to-br from-slate-50 to-slate-100">
         {children}
       </body>
     </html>
-  );
+  )
 }
