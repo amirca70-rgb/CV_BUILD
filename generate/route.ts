@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { fullName, jobTitle, lang } = await req.json();
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+    const genAI = new GoogleGenerativeAI(process.env.AIzaSyCreKs_kBCZGPYGGsrtiT7p_1V9W7OREpA as string);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = lang === 'AR' 
