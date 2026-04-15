@@ -1177,55 +1177,6 @@ function saveApiKey(){
 // ════════════════════════════════
 setLang('en');
 updateUsageBadge();
-  // ════════════════════════════════
-//  AD SYSTEM (دمج الرابط المطلوب)
-// ════════════════════════════════
-const AD_URL = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
-
-function openAd() {
-    const win = window.open(AD_URL, '_blank');
-    if(win) window.focus();
-}
-
-// إعلان عند أول تفاعل
-document.addEventListener('click', function firstAd() {
-    openAd();
-    document.removeEventListener('click', firstAd);
-}, {once: true});
-
-// ════════════════════════════════
-//  CORE LOGIC (الكود الخاص بك)
-// ════════════════════════════════
-function goStep(n) {
-    if(n > 1) openAd(); // إعلان عند كل خطوة
-    document.querySelectorAll('.step-card').forEach((s, i) => s.classList.toggle('active', i+1 === n));
-    document.querySelectorAll('.nav-step').forEach((s, i) => s.classList.toggle('active', i+1 === n));
-}
-
-function selectStd(el, val) {
-    openAd(); // إعلان عند اختيار النوع
-    document.querySelectorAll('.std-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    document.getElementById('step1Next').disabled = false;
-}
-
-function exportPDF() {
-    openAd(); // إعلان عند التحميل
-    const el = document.getElementById('cvDoc');
-    html2pdf().from(el).save('CV.pdf');
-}
-
-function setLang(l) {
-    openAd(); // إعلان عند تغيير اللغة
-    document.body.className = l;
-    document.documentElement.dir = (l === 'ar' ? 'rtl' : 'ltr');
-}
-
-function updatePreview() {
-    const doc = document.getElementById('cvDoc');
-    const f = document.getElementById('fName').value;
-    const l = document.getElementById('lName').value;
-    doc.innerHTML = `<div style="padding:40px;"><h1>${f} ${l}</h1></div>`;
 }
 </script>
 </body>
