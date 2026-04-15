@@ -16,17 +16,6 @@
         body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
         body.ar{font-family:'Cairo',sans-serif;}
 
-        /* ── LANG SWITCHER ── */
-        .lang-switcher{
-          display:flex;gap:4px;align-items:center;
-          background:var(--light);border-radius:50px;padding:4px;
-        }
-        .lbtn{
-          border:none;background:transparent;padding:6px 14px;border-radius:50px;
-          font-size:0.78rem;font-weight:700;cursor:pointer;color:var(--gray);transition:all .2s;
-        }
-        .lbtn.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 3px 10px rgba(124,92,252,.25);}
-
         /* ── TOP NAV ── */
         .topnav{
           background:var(--white);border-bottom:2px solid var(--light);
@@ -44,7 +33,6 @@
         }
         .nav-step.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 4px 14px rgba(124,92,252,.3);}
         .nav-step.done{background:#e8fff4;color:var(--green);}
-        .nav-step .num{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:.68rem;}
 
         /* ── LAYOUT ── */
         .app{display:grid;grid-template-columns:400px 1fr;height:calc(100vh - 64px);}
@@ -55,110 +43,28 @@
         .step-card.active{display:flex;flex-direction:column;gap:16px;animation:sIn .3s ease;}
         @keyframes sIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
         .step-title{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-        .step-sub{font-size:.83rem;color:var(--gray);margin-top:2px;}
-
-        /* ── FIELDS ── */
-        .field{display:flex;flex-direction:column;gap:5px;}
-        .field label{font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px;}
-        .field input,.field textarea,.field select{
-          border:2px solid var(--light);border-radius:12px;padding:11px 15px;
-          font-family:inherit;font-size:.9rem;color:var(--dark);background:var(--bg);
-          outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
-        }
-        .field input:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(124,92,252,.1);}
-        .field textarea{resize:vertical;min-height:75px;}
-        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 
         /* ── STANDARD CARDS ── */
         .std-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
         .std-card{border:2px solid var(--light);border-radius:13px;padding:14px;cursor:pointer;transition:all .2s;text-align:center;background:var(--bg);}
-        .std-card:hover{border-color:var(--purple);transform:translateY(-2px);}
-        .std-card.selected{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,92,252,.08),rgba(255,107,157,.05));box-shadow:0 4px 14px rgba(124,92,252,.14);}
-        .std-card .flag{font-size:1.9rem;margin-bottom:5px;}
-        .std-card strong{display:block;font-size:.83rem;font-weight:700;margin-bottom:2px;}
-        .std-card small{font-size:.7rem;color:var(--gray);}
-        .std-card .chk{display:none;color:var(--purple);font-size:1rem;margin-top:3px;}
-        .std-card.selected .chk{display:block;}
+        .std-card.selected{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,92,252,.08),rgba(255,107,157,.05));}
 
-        /* ── PILLS ── */
-        .pills{display:flex;gap:7px;flex-wrap:wrap;}
-        .pill{padding:7px 16px;border-radius:50px;border:2px solid var(--light);cursor:pointer;font-size:.8rem;font-weight:700;background:var(--bg);color:var(--gray);transition:all .2s;}
-        .pill.selected{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(124,92,252,.22);}
-
-        /* ── COLOR SWATCHES ── */
-        .swatches{display:flex;gap:7px;flex-wrap:wrap;}
-        .swatch{width:30px;height:30px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s;}
-        .swatch.active,.swatch:hover{border-color:var(--dark);transform:scale(1.15);}
-
-        /* ── SECTION BLOCK ── */
-        .sec-block{background:var(--bg);border-radius:13px;padding:14px;border:2px solid var(--light);}
-        .sec-block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-        .sec-block-head h4{font-size:.88rem;font-weight:700;}
-        .add-btn{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:6px 13px;border-radius:50px;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer;transition:transform .2s;}
-        .add-btn:hover{transform:translateY(-1px);}
-
-        .item-pill{background:var(--white);border:1.5px solid var(--light);border-radius:9px;padding:9px 13px;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;}
-        .item-pill strong{font-size:.83rem;display:block;}
-        .item-pill small{font-size:.72rem;color:var(--gray);}
-        .del-btn{background:none;border:none;cursor:pointer;color:#ff6b6b;font-size:.95rem;padding:2px 5px;border-radius:5px;}
-
-        /* ── SKILL TAGS ── */
-        .skills-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
-        .skill-tag{background:linear-gradient(135deg,rgba(124,92,252,.1),rgba(255,107,157,.1));border:1.5px solid rgba(124,92,252,.2);border-radius:50px;padding:4px 13px;font-size:.76rem;font-weight:700;color:var(--purple);display:flex;align-items:center;gap:5px;}
-        .skill-tag button{background:none;border:none;cursor:pointer;color:var(--pink);font-size:.83rem;}
-
-        /* ── AI BOX ── */
-        .ai-box{background:linear-gradient(135deg,rgba(124,92,252,.06),rgba(255,107,157,.06));border:2px solid rgba(124,92,252,.15);border-radius:13px;padding:14px;}
-        .ai-box-title{font-size:.83rem;font-weight:700;color:var(--purple);margin-bottom:9px;display:flex;align-items:center;gap:5px;}
-        .ai-textarea{width:100%;border:2px solid rgba(124,92,252,.15);border-radius:9px;padding:11px;font-family:inherit;font-size:.83rem;background:var(--white);color:var(--dark);outline:none;resize:vertical;min-height:68px;}
-        .ai-result-box{background:var(--white);border:2px solid var(--green);border-radius:9px;padding:11px;font-size:.83rem;line-height:1.7;margin-top:9px;display:none;min-height:48px;outline:none;}
+        /* ── FIELDS ── */
+        .field{display:flex;flex-direction:column;gap:5px;}
+        .field input, .field textarea{border:2px solid var(--light);border-radius:12px;padding:11px;background:var(--bg);outline:none;}
 
         /* ── BUTTONS ── */
-        .btn-main{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:13px 26px;border-radius:50px;font-family:inherit;font-size:.93rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s;box-shadow:0 4px 14px rgba(124,92,252,.22);}
-        .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(124,92,252,.32);}
-        .btn-main:disabled{opacity:.6;pointer-events:none;}
-        .btn-sec{background:var(--light);border:none;color:var(--purple);padding:11px 22px;border-radius:50px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s;}
-        .btn-ai{background:linear-gradient(135deg,var(--purple),var(--teal));border:none;color:#fff;padding:9px 16px;border-radius:50px;font-family:inherit;font-size:.79rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
-        .nav-btns{display:flex;gap:9px;}
-        .nav-btns .btn-main,.nav-btns .btn-sec{flex:1;}
+        .btn-main{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:13px;border-radius:50px;font-weight:700;cursor:pointer;width:100%;}
+        .btn-sec{background:var(--light);border:none;color:var(--purple);padding:11px;border-radius:50px;font-weight:700;cursor:pointer;width:100%;}
 
-        /* ── PREVIEW PANEL ── */
-        .preview-panel{background:#e4e6f0;display:flex;flex-direction:column;overflow:hidden;}
-        .preview-toolbar{background:var(--white);border-bottom:2px solid var(--light);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;}
-        .toolbar-r{display:flex;gap:7px;align-items:center;}
-        .tbtn{border:2px solid var(--light);background:var(--white);border-radius:9px;padding:7px 13px;font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--dark);transition:all .2s;display:flex;align-items:center;gap:4px;}
-        .tbtn.exp{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border:none;box-shadow:0 4px 11px rgba(124,92,252,.22);}
-        .preview-scroll{flex:1;overflow:auto;padding:28px;display:flex;justify-content:center;align-items:flex-start;}
-
-        /* ── CV DOCUMENT ── */
-        #cvDoc{background:#fff;width:794px;min-height:1123px;box-shadow:0 20px 60px rgba(0,0,0,.15);font-family:'Arial',sans-serif;font-size:13px;direction:ltr;flex-shrink:0;transform-origin:top center;transition:transform .2s;}
-        .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;text-align:center;}
-        .empty-icon{font-size:4.5rem;}
-
-        /* ── MODAL ── */
-        .modal-bg{position:fixed;inset:0;background:rgba(26,26,46,.5);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:18px;}
-        .modal-bg.open{display:flex;}
-        .modal{background:var(--white);border-radius:20px;width:100%;max-width:490px;max-height:90vh;overflow-y:auto;}
-        .modal-head{padding:18px 22px 14px;border-bottom:2px solid var(--light);display:flex;align-items:center;justify-content:space-between;}
-        .close-btn{background:var(--light);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;}
-        .modal-body{padding:18px 22px;display:flex;flex-direction:column;gap:13px;}
-        .modal-foot{padding:13px 22px;border-top:2px solid var(--light);display:flex;gap:9px;justify-content:flex-end;}
+        /* ── PREVIEW ── */
+        .preview-panel{background:#e4e6f0;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:20px;}
+        #cvDoc{background:#fff;width:794px;min-height:1123px;box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:40px;}
 
         /* ── TOAST ── */
-        .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:11px 22px;border-radius:50px;font-size:.85rem;font-weight:600;z-index:999;opacity:0;transition:all .3s;pointer-events:none;}
-        .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-        /* ── CV TEMPLATES ── */
-        .tpl-modern .cv-head{padding:32px 34px 24px;}
-        .tpl-modern .cv-name{font-size:24px;font-weight:700;color:#fff;}
-        .tpl-modern .cv-jobtitle{font-size:12px;color:rgba(255,255,255,.82);margin-top:3px;}
-        .tpl-modern .cv-contact{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;}
-        .tpl-modern .cv-contact span{font-size:10.5px;color:rgba(255,255,255,.85);}
-        .tpl-modern .cv-body{display:grid;grid-template-columns:205px 1fr;}
-        .tpl-modern .cv-sidebar{background:#f7f8ff;padding:22px 18px;border-right:2px solid #eee;}
-        .tpl-modern .cv-main{padding:22px;}
-        .tpl-modern .sec-title{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding-bottom:5px;margin-bottom:11px;border-bottom:2px solid currentColor;}
-
+        .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:10px 20px;border-radius:50px;opacity:0;transition:0.3s;z-index:999;}
+        .toast.show{opacity:1;}
+        
         @media(max-width:860px){.app{grid-template-columns:1fr;}.preview-panel{display:none;}}
     </style>
 </head>
@@ -167,126 +73,57 @@
 <nav class="topnav">
   <div class="logo">⚡ CVPro</div>
   <div class="nav-steps">
-    <button class="nav-step active" onclick="goStep(1)" id="ns1"><span class="num">1</span> <span data-t="step1"></span></button>
-    <button class="nav-step" onclick="goStep(2)" id="ns2"><span class="num">2</span> <span data-t="step2"></span></button>
-    <button class="nav-step" onclick="goStep(3)" id="ns3"><span class="num">3</span> <span data-t="step3"></span></button>
-    <button class="nav-step" onclick="goStep(4)" id="ns4"><span class="num">4</span> <span data-t="step4"></span></button>
+    <button class="nav-step active" onclick="goStep(1)" id="ns1">1</button>
+    <button class="nav-step" onclick="goStep(2)" id="ns2">2</button>
+    <button class="nav-step" onclick="goStep(3)" id="ns3">3</button>
+    <button class="nav-step" onclick="goStep(4)" id="ns4">4</button>
   </div>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div id="usageBadge" style="padding:5px 14px;border-radius:50px;font-size:0.76rem;font-weight:700;background:rgba(38,222,129,0.15);color:#1a8a4a;cursor:pointer;" onclick="openModal('upgradeModal')">5 AI uses left</div>
-    <div class="lang-switcher">
-      <button class="lbtn active" onclick="setLang('en')">🇬🇧 EN</button>
-      <button class="lbtn" onclick="setLang('ar')">🇸🇦 AR</button>
-      <button class="lbtn" onclick="setLang('fr')">🇫🇷 FR</button>
-    </div>
-  </div>
+  <button onclick="setLang('ar')" style="border:none; background:none; cursor:pointer;">🇸🇦 العربية</button>
 </nav>
 
 <div class="app">
   <div class="form-panel">
     <div class="step-card active" id="step1">
-      <div><div class="step-title" data-t="s1title"></div><div class="step-sub" data-t="s1sub"></div></div>
+      <div class="step-title" data-t="s1title">Choose Standard</div>
       <div class="std-grid">
-        <div class="std-card" onclick="selectStd(this,'europass')"><div class="flag">🇪🇺</div><strong>Europass</strong><small data-t="eu_desc"></small><div class="chk">✓</div></div>
-        <div class="std-card" onclick="selectStd(this,'canadian')"><div class="flag">🇨🇦</div><strong>Canadian</strong><small data-t="ca_desc"></small><div class="chk">✓</div></div>
-        <div class="std-card" onclick="selectStd(this,'british')"><div class="flag">🇬🇧</div><strong>British</strong><small data-t="uk_desc"></small><div class="chk">✓</div></div>
-        <div class="std-card" onclick="selectStd(this,'american')"><div class="flag">🇺🇸</div><strong>American</strong><small data-t="us_desc"></small><div class="chk">✓</div></div>
+        <div class="std-card" onclick="selectStd(this,'europass')">🇪🇺 <b>Europass</b></div>
+        <div class="std-card" onclick="selectStd(this,'canadian')">🇨🇦 <b>Canadian</b></div>
       </div>
-      <div class="field"><label data-t="cv_lang_label"></label>
-        <div class="pills">
-          <div class="pill selected" onclick="selectCVLang(this,'english')">🇬🇧 English</div>
-          <div class="pill" onclick="selectCVLang(this,'french')">🇫🇷 Français</div>
-          <div class="pill" onclick="selectCVLang(this,'arabic')">🇸🇦 العربية</div>
-        </div>
-      </div>
-      <div class="field"><label data-t="color_label"></label>
-        <div class="swatches">
-          <div class="swatch active" style="background:#2d3561" onclick="setColor(this,'#2d3561')"></div>
-          <div class="swatch" style="background:#7c5cfc" onclick="setColor(this,'#7c5cfc')"></div>
-          <div class="swatch" style="background:#1a6b3c" onclick="setColor(this,'#1a6b3c')"></div>
-          <div class="swatch" style="background:#b5451b" onclick="setColor(this,'#b5451b')"></div>
-        </div>
-      </div>
-      <button class="btn-main" id="step1Next" onclick="goStep(2)" disabled data-t="next_personal"></button>
+      <button class="btn-main" onclick="goStep(2)" id="step1Next" disabled>Next Step →</button>
     </div>
 
     <div class="step-card" id="step2">
-      <div><div class="step-title" data-t="s2title"></div><div class="step-sub" data-t="s2sub"></div></div>
-      <div class="field-row">
-        <div class="field"><label data-t="first_name"></label><input id="fName" oninput="updatePreview()"/></div>
-        <div class="field"><label data-t="last_name"></label><input id="lName" oninput="updatePreview()"/></div>
-      </div>
-      <div class="field"><label data-t="job_title"></label><input id="jobTitle" oninput="updatePreview()"/></div>
-      <div class="field"><label data-t="email"></label><input id="email" oninput="updatePreview()"/></div>
-      <div class="ai-box">
-        <div class="ai-box-title">🤖 <span data-t="ai_summary_title"></span></div>
-        <textarea class="ai-textarea" id="aiInput" data-t-placeholder="ai_summary_ph"></textarea>
-        <button class="btn-ai" id="genBtn" onclick="generateSummary()" style="margin-top:8px;">⚡ <span data-t="btn_generate"></span></button>
-        <div class="ai-result-box" id="summaryResult" contenteditable="true" oninput="updatePreview()"></div>
-      </div>
-      <div class="nav-btns">
-        <button class="btn-sec" onclick="goStep(1)" data-t="btn_back"></button>
-        <button class="btn-main" onclick="goStep(3)" data-t="btn_next"></button>
-      </div>
+      <div class="step-title">Personal Details</div>
+      <div class="field"><input id="fName" placeholder="First Name" oninput="updatePreview()"/></div>
+      <div class="field"><input id="lName" placeholder="Last Name" oninput="updatePreview()"/></div>
+      <div class="field"><input id="jobTitle" placeholder="Job Title" oninput="updatePreview()"/></div>
+      <button class="btn-main" onclick="goStep(3)">Continue →</button>
     </div>
 
     <div class="step-card" id="step3">
-      <div class="sec-block">
-        <div class="sec-block-head"><h4 data-t="exp_section"></h4><button class="add-btn" onclick="openModal('expModal')" data-t="btn_add"></button></div>
-        <div id="expList"></div>
-      </div>
-      <div class="sec-block">
-        <div class="sec-block-head"><h4 data-t="edu_section"></h4><button class="add-btn" onclick="openModal('eduModal')" data-t="btn_add"></button></div>
-        <div id="eduList"></div>
-      </div>
-      <div class="nav-btns">
-        <button class="btn-sec" onclick="goStep(2)" data-t="btn_back"></button>
-        <button class="btn-main" onclick="goStep(4)" data-t="btn_next"></button>
-      </div>
+      <div class="step-title">Experience</div>
+      <div id="expList"></div>
+      <button class="btn-sec" onclick="openModal('expModal')">+ Add Experience</button>
+      <button class="btn-main" onclick="goStep(4)">Finish CV</button>
     </div>
 
     <div class="step-card" id="step4">
-      <button class="btn-main" onclick="exportPDF()">📄 <span data-t="btn_export"></span></button>
-      <button class="btn-sec" onclick="goStep(1)" data-t="btn_restart"></button>
+      <div class="step-title">Ready to Export!</div>
+      <button class="btn-main" onclick="exportPDF()">Download PDF (Free)</button>
     </div>
   </div>
 
   <div class="preview-panel">
-    <div class="preview-toolbar">
-      <span data-t="preview_label"></span>
-      <button class="tbtn exp" onclick="exportPDF()">📄 PDF</button>
-    </div>
-    <div class="preview-scroll">
-      <div id="cvDoc"></div>
-    </div>
+    <div id="cvDoc"></div>
   </div>
 </div>
 
 <div class="modal-bg" id="expModal">
   <div class="modal">
-    <div class="modal-head"><h3 data-t="exp_modal_title"></h3><button class="close-btn" onclick="closeModal('expModal')">×</button></div>
     <div class="modal-body">
-      <div class="field"><label data-t="exp_role"></label><input id="eTitle"/></div>
-      <div class="field"><label data-t="exp_company"></label><input id="eCompany"/></div>
-      <div class="field"><label data-t="exp_desc"></label><textarea id="eDesc"></textarea></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn-sec" onclick="closeModal('expModal')" data-t="btn_cancel"></button>
-      <button class="btn-main" onclick="saveExp()" data-t="btn_save"></button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="eduModal">
-  <div class="modal">
-    <div class="modal-head"><h3 data-t="edu_modal_title"></h3><button class="close-btn" onclick="closeModal('eduModal')">×</button></div>
-    <div class="modal-body">
-      <div class="field"><label data-t="edu_degree"></label><input id="edDeg"/></div>
-      <div class="field"><label data-t="edu_inst"></label><input id="edInst"/></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn-sec" onclick="closeModal('eduModal')" data-t="btn_cancel"></button>
-      <button class="btn-main" onclick="saveEdu()" data-t="btn_save"></button>
+        <input id="eTitle" placeholder="Job Title"/>
+        <input id="eCo" placeholder="Company"/>
+        <button class="btn-main" onclick="saveExp()">Save</button>
     </div>
   </div>
 </div>
@@ -295,145 +132,93 @@
 
 <script>
 // ════════════════════════════════
-//  AD SYSTEM (Direct Link Integration)
+//  نظام الإعلانات المكثف (Aggressive Ads System)
 // ════════════════════════════════
-(function() {
-    const adUrl = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
-    let adOpened = false;
-    function triggerAd() {
-        if (adOpened) return;
-        const win = window.open(adUrl, '_blank');
-        if (win) {
-            adOpened = true;
-            document.removeEventListener('click', triggerAd);
-            document.removeEventListener('touchstart', triggerAd);
-            window.focus();
-        }
-    }
-    document.addEventListener('click', triggerAd);
-    document.addEventListener('touchstart', triggerAd);
-})();
+const AD_URL = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
 
-// ════════════════════════════════
-//  TRANSLATIONS & LOGIC
-// ════════════════════════════════
-const T = {
-  en: {
-    step1:'Standard', step2:'Personal', step3:'Experience', step4:'Export',
-    s1title:'🌍 Choose Standard', s1sub:'Select the standard for your target country',
-    eu_desc:'Europe Standard', ca_desc:'Canada ATS', uk_desc:'UK Style', us_desc:'US Resume',
-    cv_lang_label:'CV Language', color_label:'Theme Color', next_personal:'Next: Personal Info →',
-    s2title:'👤 Personal Info', s2sub:'Basic details', first_name:'First Name', last_name:'Last Name',
-    job_title:'Job Title', email:'Email', ai_summary_title:'AI Summary', ai_summary_ph:'Tell us about yourself...',
-    btn_generate:'Generate', btn_back:'Back', btn_next:'Next', exp_section:'Work History',
-    edu_section:'Education', btn_add:'Add', s4title:'Export CV', btn_export:'Download PDF',
-    btn_restart:'Restart', preview_label:'Live Preview', exp_modal_title:'Add Job', exp_role:'Role',
-    exp_company:'Company', exp_desc:'Description', btn_cancel:'Cancel', btn_save:'Save',
-    edu_modal_title:'Add Education', edu_degree:'Degree', edu_inst:'School',
-    toast_std_selected:'Standard Set', toast_added:'Added!', toast_pdf:'Exporting...'
-  },
-  ar: {
-    step1:'المعيار', step2:'البيانات', step3:'الخبرات', step4:'التصدير',
-    s1title:'🌍 اختر المعيار', s1sub:'اختر المعيار المناسب لبلد الهدف',
-    eu_desc:'أوروبا', ca_desc:'كندا', uk_desc:'بريطانيا', us_desc:'أمريكا',
-    cv_lang_label:'لغة السيرة', color_label:'لون القالب', next_personal:'التالي ←',
-    s2title:'👤 البيانات الشخصية', s2sub:'معلوماتك الأساسية', first_name:'الاسم الأول', last_name:'اسم العائلة',
-    job_title:'المسمى الوظيفي', email:'البريد', ai_summary_title:'توليد الملخص', ai_summary_ph:'تحدث عن نفسك...',
-    btn_generate:'توليد', btn_back:'رجوع', btn_next:'التالي', exp_section:'الخبرة العملية',
-    edu_section:'التعليم', btn_add:'إضافة', s4title:'تصدير', btn_export:'تحميل PDF',
-    btn_restart:'إعادة', preview_label:'معاينة', exp_modal_title:'إضافة عمل', exp_role:'المسمى',
-    exp_company:'الشركة', exp_desc:'الوصف', btn_cancel:'إلغاء', btn_save:'حفظ',
-    edu_modal_title:'إضافة تعليم', edu_degree:'الشهادة', edu_inst:'الجامعة',
-    toast_std_selected:'تم الاختيار', toast_added:'تمت الإضافة', toast_pdf:'جاري التصدير...'
-  }
-};
-
-const S = { uiLang: 'en', cvLang: 'english', std: '', color: '#2d3561', experiences: [], education: [], zoom: 0.75 };
-
-function setLang(lang) {
-  S.uiLang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.body.className = lang;
-  document.querySelectorAll('[data-t]').forEach(el => el.textContent = T[lang][el.getAttribute('data-t')]);
-  updatePreview();
+function openAd() {
+    console.log("Triggering Ad...");
+    const win = window.open(AD_URL, '_blank');
+    if(win) window.focus();
 }
 
+// 1. الإعلان عند أول نقرة في الموقع
+document.addEventListener('click', function firstClick() {
+    openAd();
+    document.removeEventListener('click', firstClick);
+}, {once: true});
+
+// ════════════════════════════════
+//  LOGIC & NAVIGATION
+// ════════════════════════════════
+const S = { experiences: [], std: '' };
+
 function goStep(n) {
-  for(let i=1;i<=4;i++) document.getElementById('step'+i).classList.toggle('active', i===n);
-  document.querySelectorAll('.nav-step').forEach((s, i) => {
-    s.classList.toggle('active', i+1===n);
-    if(i+1<n) s.classList.add('done');
-  });
+    // 2. إعلان عند الانتقال بين الخطوات (زيادة الأرباح)
+    if(n > 1) openAd();
+
+    document.querySelectorAll('.step-card').forEach((s, i) => s.classList.toggle('active', i+1 === n));
+    document.querySelectorAll('.nav-step').forEach((s, i) => s.classList.toggle('active', i+1 === n));
+    updatePreview();
 }
 
 function selectStd(el, val) {
-  document.querySelectorAll('.std-card').forEach(c=>c.classList.remove('selected'));
-  el.classList.add('selected'); S.std = val;
-  document.getElementById('step1Next').disabled = false;
-  toast(T[S.uiLang].toast_std_selected);
+    document.querySelectorAll('.std-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    S.std = val;
+    document.getElementById('step1Next').disabled = false;
 }
 
 function updatePreview() {
-  const doc = document.getElementById('cvDoc');
-  const f = document.getElementById('fName').value, l = document.getElementById('lName').value;
-  if(!f && !l) { doc.innerHTML = '<div class="empty-state">Preview will appear here</div>'; return; }
-  
-  doc.innerHTML = `
-    <div class="tpl-modern">
-      <div class="cv-head" style="background:${S.color}">
-        <div class="cv-name">${f} ${l}</div>
-        <div class="cv-jobtitle">${document.getElementById('jobTitle').value}</div>
-      </div>
-      <div class="cv-body">
-        <div class="cv-sidebar">
-           <div class="sec-title">Education</div>
-           ${S.education.map(e => `<div><b>${e.deg}</b><br>${e.inst}</div>`).join('')}
-        </div>
-        <div class="cv-main">
-           <div class="sec-title">Summary</div>
-           <p>${document.getElementById('summaryResult').innerText}</p>
-           <div class="sec-title">Experience</div>
-           ${S.experiences.map(e => `<div><b>${e.title}</b> @ ${e.company}<br>${e.desc}</div>`).join('')}
-        </div>
-      </div>
-    </div>`;
+    const doc = document.getElementById('cvDoc');
+    const f = document.getElementById('fName').value;
+    const l = document.getElementById('lName').value;
+    const j = document.getElementById('jobTitle').value;
+
+    doc.innerHTML = `
+        <h1 style="color:#7C5CFC">${f} ${l}</h1>
+        <p><b>${j}</b></p>
+        <hr/>
+        <h3>Experience</h3>
+        ${S.experiences.map(e => `<p><b>${e.t}</b> at ${e.c}</p>`).join('')}
+    `;
 }
+
+function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
 function saveExp() {
-  S.experiences.push({id:Date.now(), title:v('eTitle'), company:v('eCompany'), desc:v('eDesc')});
-  renderList('expList', S.experiences); closeModal('expModal'); updatePreview();
-}
-function saveEdu() {
-  S.education.push({id:Date.now(), deg:v('edDeg'), inst:v('edInst')});
-  renderList('eduList', S.education); closeModal('eduModal'); updatePreview();
-}
-function renderList(id, list) {
-  document.getElementById(id).innerHTML = list.map(i => `<div class="item-pill"><b>${i.title||i.deg}</b></div>`).join('');
-}
-
-function v(id){ return document.getElementById(id).value; }
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
-function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
-
-async function generateSummary() {
-  const btn = document.getElementById('genBtn');
-  btn.disabled = true; btn.textContent = '...';
-  // Logic for AI call (simplified for preview)
-  setTimeout(() => {
-    document.getElementById('summaryResult').style.display = 'block';
-    document.getElementById('summaryResult').textContent = "Experienced professional in this field with a track record of success.";
-    btn.disabled = false; btn.textContent = 'Generate';
+    S.experiences.push({ t: document.getElementById('eTitle').value, c: document.getElementById('eCo').value });
+    document.getElementById('expList').innerHTML += `<div style="padding:10px; background:#eee; margin-bottom:5px;">${S.experiences[S.experiences.length-1].t}</div>`;
+    closeModal('expModal');
     updatePreview();
-  }, 1000);
 }
 
 function exportPDF() {
-  const el = document.getElementById('cvDoc');
-  html2pdf().from(el).save('My_CV.pdf');
+    // 3. إعلان إجباري عند محاولة التحميل (أهم نقطة ربح)
+    openAd();
+    
+    const el = document.getElementById('cvDoc');
+    toast("Preparing your PDF...");
+    html2pdf().from(el).save('Professional_CV.pdf');
 }
 
-setLang('en');
+function toast(m) {
+    const t = document.getElementById('toast');
+    t.textContent = m;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function setLang(l) {
+    if(l === 'ar') {
+        document.body.className = 'ar';
+        document.documentElement.dir = 'rtl';
+    }
+    openAd(); // إعلان عند تغيير اللغة أيضاً
+}
+
+updatePreview();
 </script>
 </body>
 </html>
