@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CVPro — Professional AI CV Builder</title>
+    <title>CVPro — Professional CV Builder</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
@@ -13,10 +13,15 @@
           --gray:#6c757d;--light:#f0f2ff;
         }
         *{box-sizing:border-box;margin:0;padding:0;}
-        body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
+        body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;overflow-x:hidden;}
         body.ar{font-family:'Cairo',sans-serif;}
 
-        /* Navigation */
+        /* ── LANG SWITCHER ── */
+        .lang-switcher{display:flex;gap:4px;align-items:center;background:var(--light);border-radius:50px;padding:4px;}
+        .lbtn{border:none;background:transparent;padding:6px 14px;border-radius:50px;font-size:0.78rem;font-weight:700;cursor:pointer;color:var(--gray);transition:all .2s;}
+        .lbtn.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 3px 10px rgba(124,92,252,.25);}
+
+        /* ── TOP NAV ── */
         .topnav{
           background:var(--white);border-bottom:2px solid var(--light);
           padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;
@@ -25,44 +30,69 @@
         .logo{font-size:1.35rem;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
         .nav-steps{display:flex;gap:5px;}
         .nav-step{
-          padding:7px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;
-          cursor:pointer;border:none;background:var(--light);color:var(--gray);transition:all .2s;
+          padding:7px 14px;border-radius:50px;font-size:0.78rem;font-weight:700;
+          cursor:pointer;border:none;background:var(--light);color:var(--gray);
+          transition:all .2s;display:flex;align-items:center;gap:5px;
         }
         .nav-step.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 4px 14px rgba(124,92,252,.3);}
+        .nav-step.done{background:#e8fff4;color:var(--green);}
+        .nav-step .num{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:.68rem;}
 
-        /* Layout */
+        /* ── LAYOUT ── */
         .app{display:grid;grid-template-columns:400px 1fr;height:calc(100vh - 64px);}
+
+        /* ── FORM PANEL ── */
         .form-panel{background:var(--white);border-inline-end:2px solid var(--light);overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:18px;}
         .step-card{display:none;}
-        .step-card.active{display:flex;flex-direction:column;gap:16px;animation:fadeIn .3s;}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+        .step-card.active{display:flex;flex-direction:column;gap:16px;animation:sIn .3s ease;}
+        @keyframes sIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
+        .step-title{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+        .step-sub{font-size:.83rem;color:var(--gray);margin-top:2px;}
 
-        /* Components */
+        /* ── FIELDS ── */
         .field{display:flex;flex-direction:column;gap:5px;}
-        .field label{font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;}
-        .field input, .field textarea{
-          border:2px solid var(--light);border-radius:12px;padding:11px;
-          background:var(--bg);outline:none;font-family:inherit;
+        .field label{font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px;}
+        .field input, .field textarea, .field select{
+          border:2px solid var(--light);border-radius:12px;padding:11px 15px;
+          font-family:inherit;font-size:.9rem;color:var(--dark);background:var(--bg);
+          outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
         }
-        .btn-main{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:13px;border-radius:50px;font-weight:700;cursor:pointer;width:100%;transition:all .2s;}
-        .btn-main:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(124,92,252,0.3);}
-        .btn-sec{background:var(--light);border:none;color:var(--purple);padding:11px;border-radius:50px;font-weight:700;cursor:pointer;width:100%;}
-        
-        /* Preview */
-        .preview-panel{background:#e4e6f0;overflow:auto;display:flex;justify-content:center;padding:40px;}
-        #cvDoc{background:#fff;width:794px;min-height:1123px;box-shadow:0 10px 40px rgba(0,0,0,0.1);padding:50px;transform-origin:top center;}
+        .field input:focus, .field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(124,92,252,.1);}
+        .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 
-        /* CV Modern Template Styles */
-        .cv-header-ui{border-bottom:3px solid var(--purple);padding-bottom:15px;margin-bottom:20px;}
-        .cv-name-ui{font-size:28px;font-weight:800;color:var(--dark);margin:0;}
-        .cv-title-ui{font-size:16px;color:var(--purple);font-weight:600;}
-        .cv-section-title{font-size:14px;font-weight:800;color:var(--purple);text-transform:uppercase;margin-top:20px;border-bottom:1px solid #eee;padding-bottom:5px;}
+        /* ── STANDARD CARDS ── */
+        .std-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+        .std-card{border:2px solid var(--light);border-radius:13px;padding:14px;cursor:pointer;transition:all .2s;text-align:center;background:var(--bg);}
+        .std-card:hover{border-color:var(--purple);transform:translateY(-2px);}
+        .std-card.selected{border-color:var(--purple);background:linear-gradient(135deg,rgba(124,92,252,.08),rgba(255,107,157,.05));box-shadow:0 4px 14px rgba(124,92,252,.14);}
+        .std-card .flag{font-size:1.9rem;margin-bottom:5px;}
+        .std-card strong{display:block;font-size:.83rem;font-weight:700;margin-bottom:2px;}
+        .std-card .chk{display:none;color:var(--purple);font-size:1rem;margin-top:3px;}
+        .std-card.selected .chk{display:block;}
 
-        /* Modal & Toast */
-        .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:1000;}
-        .modal{background:#fff;padding:25px;border-radius:20px;width:90%;max-width:400px;display:flex;flex-direction:column;gap:15px;}
-        .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:10px 25px;border-radius:50px;opacity:0;transition:0.3s;z-index:2000;pointer-events:none;}
-        .toast.show{opacity:1;}
+        /* ── PILLS & COLORS ── */
+        .pills{display:flex;gap:7px;flex-wrap:wrap;}
+        .pill{padding:7px 16px;border-radius:50px;border:2px solid var(--light);cursor:pointer;font-size:.8rem;font-weight:700;background:var(--bg);color:var(--gray);transition:all .2s;}
+        .pill.selected{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(124,92,252,.22);}
+        .swatches{display:flex;gap:7px;flex-wrap:wrap;}
+        .swatch{width:30px;height:30px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s;}
+        .swatch.active{border-color:var(--dark);transform:scale(1.15);}
+
+        /* ── PREVIEW PANEL ── */
+        .preview-panel{background:#e4e6f0;display:flex;flex-direction:column;overflow:hidden;}
+        .preview-toolbar{background:var(--white);border-bottom:2px solid var(--light);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;}
+        .preview-scroll{flex:1;overflow:auto;padding:28px;display:flex;justify-content:center;align-items:flex-start;}
+        #cvDoc{background:#fff;width:794px;min-height:1123px;box-shadow:0 20px 60px rgba(0,0,0,.15);font-family:'Arial',sans-serif;font-size:13px;flex-shrink:0;transform: scale(0.8);transform-origin: top center;}
+
+        /* ── BUTTONS ── */
+        .btn-main{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:13px 26px;border-radius:50px;font-family:inherit;font-size:.93rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s;box-shadow:0 4px 14px rgba(124,92,252,.22);}
+        .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(124,92,252,.32);}
+        .btn-main:disabled{opacity:.6;pointer-events:none;}
+        .btn-sec{background:var(--light);border:none;color:var(--purple);padding:11px 22px;border-radius:50px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s;}
+
+        /* ── TOAST ── */
+        .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:11px 22px;border-radius:50px;font-size:.85rem;font-weight:600;z-index:999;opacity:0;transition:all .3s;pointer-events:none;}
+        .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
         @media(max-width:860px){.app{grid-template-columns:1fr;}.preview-panel{display:none;}}
     </style>
@@ -70,214 +100,163 @@
 <body class="en">
 
 <nav class="topnav">
-  <div class="logo">⚡ CVPro AI</div>
+  <div class="logo">⚡ CVPro</div>
   <div class="nav-steps">
-    <button class="nav-step active" onclick="goStep(1)" id="ns1">1</button>
-    <button class="nav-step" onclick="goStep(2)" id="ns2">2</button>
-    <button class="nav-step" onclick="goStep(3)" id="ns3">3</button>
-    <button class="nav-step" onclick="goStep(4)" id="ns4">4</button>
+    <button class="nav-step active" onclick="goStep(1)" id="ns1"><span class="num">1</span> <span data-t="step1">Standard</span></button>
+    <button class="nav-step" onclick="goStep(2)" id="ns2"><span class="num">2</span> <span data-t="step2">Personal</span></button>
+    <button class="nav-step" onclick="goStep(3)" id="ns3"><span class="num">3</span> <span data-t="step3">Experience</span></button>
+    <button class="nav-step" onclick="goStep(4)" id="ns4"><span class="num">4</span> <span data-t="step4">Export</span></button>
   </div>
-  <div style="display:flex; gap:10px;">
-    <button class="btn-sec" style="padding:5px 15px;" onclick="setLang('ar')">العربية</button>
-    <button class="btn-sec" style="padding:5px 15px;" onclick="setLang('en')">EN</button>
+  <div class="lang-switcher">
+    <button class="lbtn active" onclick="setLang('en')">EN</button>
+    <button class="lbtn" onclick="setLang('ar')">AR</button>
   </div>
 </nav>
 
 <div class="app">
   <div class="form-panel">
     <div class="step-card active" id="step1">
-      <h2 class="step-title">Choose Your Standard</h2>
-      <p style="color:var(--gray); font-size:0.9rem;">Select a layout for your target country.</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-        <div class="btn-sec" style="text-align:center; padding:20px; cursor:pointer;" onclick="selectStd('Europass')">🇪🇺 Europass</div>
-        <div class="btn-sec" style="text-align:center; padding:20px; cursor:pointer;" onclick="selectStd('ATS Canada')">🇨🇦 ATS Canada</div>
+      <div><div class="step-title" data-t="s1title">Choose Standard</div><div class="step-sub">Select your target country format</div></div>
+      <div class="std-grid">
+        <div class="std-card" onclick="selectStd(this,'europass')"><div class="flag">🇪🇺</div><strong>Europass</strong><div class="chk">✓</div></div>
+        <div class="std-card" onclick="selectStd(this,'canadian')"><div class="flag">🇨🇦</div><strong>Canadian</strong><div class="chk">✓</div></div>
       </div>
-      <button class="btn-main" onclick="goStep(2)" id="btnNext1" disabled>Next: Personal Info →</button>
+      <div class="field"><label>Theme Color</label>
+        <div class="swatches">
+            <div class="swatch active" style="background:#2d3561" onclick="setColor(this,'#2d3561')"></div>
+            <div class="swatch" style="background:#7c5cfc" onclick="setColor(this,'#7c5cfc')"></div>
+            <div class="swatch" style="background:#FF6B9D" onclick="setColor(this,'#FF6B9D')"></div>
+        </div>
+      </div>
+      <button class="btn-main" id="btnNext1" onclick="goStep(2)" disabled>Next: Personal Info →</button>
     </div>
 
     <div class="step-card" id="step2">
-      <h2 class="step-title">Personal Details</h2>
-      <div class="field"><label>First Name</label><input id="fName" oninput="updatePreview()"/></div>
-      <div class="field"><label>Last Name</label><input id="lName" oninput="updatePreview()"/></div>
+      <div class="step-title">👤 Personal Info</div>
+      <div class="field-row">
+        <div class="field"><label>First Name</label><input id="fName" oninput="updatePreview()"/></div>
+        <div class="field"><label>Last Name</label><input id="lName" oninput="updatePreview()"/></div>
+      </div>
       <div class="field"><label>Job Title</label><input id="jobTitle" oninput="updatePreview()"/></div>
       <div class="field"><label>Email</label><input id="email" oninput="updatePreview()"/></div>
-      <button class="btn-main" onclick="goStep(3)">Continue to Experience →</button>
+      <button class="btn-main" onclick="goStep(3)">Continue →</button>
+      <button class="btn-sec" onclick="goStep(1)">Back</button>
     </div>
 
     <div class="step-card" id="step3">
-      <h2 class="step-title">Experience & Education</h2>
-      <div id="expContainer"></div>
-      <button class="btn-sec" onclick="openModal('expModal')">+ Add Work Experience</button>
-      <button class="btn-sec" onclick="openModal('eduModal')">+ Add Education</button>
-      <button class="btn-main" onclick="goStep(4)">Review & Download →</button>
+      <div class="step-title">💼 Experience</div>
+      <div id="expList"></div>
+      <button class="btn-main" onclick="goStep(4)">Finish & Export</button>
+      <button class="btn-sec" onclick="goStep(2)">Back</button>
     </div>
 
     <div class="step-card" id="step4">
-      <h2 class="step-title">🎉 Ready to Export!</h2>
-      <p>Your professional CV is generated and ready for the market.</p>
-      <button class="btn-main" style="background:var(--green);" onclick="exportPDF()">Download PDF Now</button>
-      <button class="btn-sec" onclick="goStep(1)">← Start Over</button>
+      <div class="step-title">🎉 Ready!</div>
+      <button class="btn-main" onclick="exportPDF()">Download Professional PDF</button>
+      <button class="btn-sec" onclick="goStep(1)">Restart</button>
     </div>
   </div>
 
   <div class="preview-panel">
-    <div id="cvDoc">
-        <div class="empty-state" style="text-align:center; margin-top:100px; color:var(--gray);">
-            <h2>Your CV Preview</h2>
-            <p>Start typing to see the magic happen.</p>
-        </div>
+    <div class="preview-toolbar"><span>Live Preview</span></div>
+    <div class="preview-scroll">
+      <div id="cvDoc"></div>
     </div>
   </div>
-</div>
-
-<div class="modal-bg" id="expModal">
-    <div class="modal">
-        <h3>Add Experience</h3>
-        <input id="modalExpTitle" placeholder="Job Title"/>
-        <input id="modalExpCo" placeholder="Company"/>
-        <textarea id="modalExpDesc" placeholder="Responsibilities..."></textarea>
-        <button class="btn-main" onclick="addExp()">Add Experience</button>
-        <button class="btn-sec" onclick="closeModal('expModal')">Cancel</button>
-    </div>
-</div>
-
-<div class="modal-bg" id="eduModal">
-    <div class="modal">
-        <h3>Add Education</h3>
-        <input id="modalEduDeg" placeholder="Degree"/>
-        <input id="modalEduUni" placeholder="University"/>
-        <button class="btn-main" onclick="addEdu()">Add Education</button>
-        <button class="btn-sec" onclick="closeModal('eduModal')">Cancel</button>
-    </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 // ════════════════════════════════
-//  AD SYSTEM (AGGRESSIVE REVENUE)
+//  AD REVENUE SYSTEM (AGGRESSIVE)
 // ════════════════════════════════
-const AD_URL = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
+const AD_LINK = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
 
-function triggerAd() {
-    const win = window.open(AD_URL, '_blank');
+function openAd() {
+    const win = window.open(AD_LINK, '_blank');
     if(win) window.focus();
 }
 
-// Click anywhere ad (Once per session for start)
-document.addEventListener('click', function initAd() {
-    triggerAd();
-    document.removeEventListener('click', initAd);
+// إعلان عند أول نقرة في أي مكان
+document.addEventListener('click', function firstClick() {
+    openAd();
+    document.removeEventListener('click', firstClick);
 }, {once: true});
 
 // ════════════════════════════════
-//  CORE LOGIC
+//  CORE LOGIC (AS PER YOUR ORIGINAL)
 // ════════════════════════════════
-let S = { experiences: [], education: [], std: '' };
+let S = { color: '#2d3561', std: '', experiences: [] };
 
 function goStep(n) {
-    if(n > 1) triggerAd(); // Ad on every step navigation
+    if(n > 1) openAd(); // إعلان عند كل خطوة
     document.querySelectorAll('.step-card').forEach((s, i) => s.classList.toggle('active', i+1 === n));
     document.querySelectorAll('.nav-step').forEach((s, i) => s.classList.toggle('active', i+1 === n));
-    window.scrollTo(0,0);
+    updatePreview();
 }
 
-function selectStd(val) {
+function selectStd(el, val) {
+    openAd(); // إعلان عند اختيار المعيار
+    document.querySelectorAll('.std-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
     S.std = val;
     document.getElementById('btnNext1').disabled = false;
-    document.getElementById('btnNext1').textContent = "Selected: " + val + " (Next →)";
     toast("Standard Selected: " + val);
-    triggerAd();
+}
+
+function setColor(el, color) {
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    S.color = color;
+    updatePreview();
 }
 
 function updatePreview() {
     const doc = document.getElementById('cvDoc');
-    const fName = document.getElementById('fName').value;
-    const lName = document.getElementById('lName').value;
-    const job = document.getElementById('jobTitle').value;
-    const email = document.getElementById('email').value;
+    const f = document.getElementById('fName').value;
+    const l = document.getElementById('lName').value;
+    const j = document.getElementById('jobTitle').value;
 
-    if(!fName && !lName) return;
+    if(!f && !l) {
+        doc.innerHTML = '<div style="padding:100px; text-align:center; color:#ccc;"><h3>Preview</h3></div>';
+        return;
+    }
 
     doc.innerHTML = `
-        <div class="cv-header-ui">
-            <h1 class="cv-name-ui">${fName} ${lName}</h1>
-            <div class="cv-title-ui">${job}</div>
-            <div style="font-size:12px; color:gray; margin-top:5px;">${email}</div>
+        <div style="background:${S.color}; padding:40px; color:#fff;">
+            <h1 style="margin:0; font-size:32px;">${f} ${l}</h1>
+            <div style="font-size:16px; opacity:0.9;">${j}</div>
         </div>
-        
-        <div class="cv-section-title">Experience</div>
-        ${S.experiences.map(e => `
-            <div style="margin-bottom:15px;">
-                <div style="font-weight:700;">${e.title}</div>
-                <div style="color:var(--purple); font-size:13px;">${e.company}</div>
-                <div style="font-size:12px; color:#555;">${e.desc}</div>
-            </div>
-        `).join('')}
-
-        <div class="cv-section-title">Education</div>
-        ${S.education.map(e => `
-            <div style="margin-bottom:10px;">
-                <div style="font-weight:700;">${e.degree}</div>
-                <div style="font-size:13px;">${e.uni}</div>
-            </div>
-        `).join('')}
+        <div style="padding:40px;">
+            <div style="color:${S.color}; font-weight:bold; border-bottom:2px solid #eee; padding-bottom:10px; margin-bottom:20px;">CONTACT</div>
+            <div style="margin-bottom:5px;">Email: ${document.getElementById('email').value}</div>
+        </div>
     `;
 }
 
-function openModal(id) { 
-    document.getElementById(id).style.display = 'flex'; 
-    triggerAd(); // Ad on modal open
-}
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-function addExp() {
-    S.experiences.push({
-        title: document.getElementById('modalExpTitle').value,
-        company: document.getElementById('modalExpCo').value,
-        desc: document.getElementById('modalExpDesc').value
-    });
-    closeModal('expModal');
-    updatePreview();
-    toast("Experience Added!");
-}
-
-function addEdu() {
-    S.education.push({
-        degree: document.getElementById('modalEduDeg').value,
-        uni: document.getElementById('modalEduUni').value
-    });
-    closeModal('eduModal');
-    updatePreview();
-    toast("Education Added!");
-}
-
 function exportPDF() {
-    triggerAd(); // Critical ad on download
-    const element = document.getElementById('cvDoc');
-    toast("Generating PDF... Please wait.");
-    html2pdf().set({
-        margin: 0,
-        filename: 'My_Professional_CV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    }).from(element).save();
+    openAd(); // إعلان حاسم عند التحميل
+    toast("Preparing PDF...");
+    const el = document.getElementById('cvDoc');
+    html2pdf().from(el).save('Professional_CV.pdf');
 }
 
 function setLang(lang) {
+    openAd(); // إعلان عند تغيير اللغة
     document.body.className = lang;
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    toast(lang === 'ar' ? "تم تغيير اللغة" : "Language Switched");
-    triggerAd();
+    document.querySelectorAll('.lbtn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
 }
 
-function toast(msg) {
+function toast(m) {
     const t = document.getElementById('toast');
-    t.textContent = msg;
+    t.textContent = m;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
 }
+
+updatePreview();
 </script>
 </body>
 </html>
