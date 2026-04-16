@@ -534,7 +534,7 @@ body.ar{font-family:'Cairo',sans-serif;}
       </div>
       <div class="field">
         <label>Enter Your Gemini API Key</label>
-        <input type="password" id="premiumKeyIn" placeholder="AQ.Ab8RN6LZiRkhFWSi4wOJKSaMqSQlPu2Vfs-5jPgaV93au463kg"/>
+        <input type="password" id="premiumKeyIn" placeholder="Paste your Gemini API key here..."/>
       </div>
       <p style="font-size:0.76rem;color:var(--gray);">
         Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--purple);font-weight:700;">aistudio.google.com/apikey →</a>
@@ -578,14 +578,14 @@ body.ar{font-family:'Cairo',sans-serif;}
 const AD_URL = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
 const AD_SKIP_DELAY = 5; // seconds before skip button activates
 
-// Track ads: 3 on load, 2 on navigation (steps 2→3 and 3→4)
+// Ad frequency config
 const adConfig = {
-  loadAdsShown: 0,
-  loadAdsTotal: 3,
-  navAdsShown: 0,
-  navAdsTotal: 2,
-  // Which step transitions trigger a nav ad (1-indexed: transition TO step N)
-  navAdSteps: [3, 4]
+  loadAdsTotal: 3,      // 3 ads on page load
+  navAdSteps: [2,3,4],  // ad on EVERY step transition
+  actionAdEvery: 1,     // ad on every add/save action
+  actionCount: 0,       // counter for actions
+  aiAdEvery: 1,         // ad before every AI call
+  aiCount: 0,
 };
 
 let adCountdownTimer = null;
@@ -643,16 +643,18 @@ async function showLoadAds() {
       await new Promise(r => setTimeout(r, 300));
     }
   }
-  adConfig.loadAdsShown = adConfig.loadAdsTotal;
+  
 }
 
-// Show a single nav ad if quota not exhausted
+// Ad on every step transition
 async function maybeShowNavAd(toStep) {
   if (!adConfig.navAdSteps.includes(toStep)) return;
-  if (adConfig.navAdsShown >= adConfig.navAdsTotal) return;
-  adConfig.navAdsShown++;
   await showAd();
 }
+// Ad before every action (add/save)
+async function maybeShowActionAd() { await showAd(); }
+// Ad before every AI call
+async function maybeShowAiAd() { await showAd(); }
 
 // ════════════════════════════════
 //  TRANSLATIONS
@@ -1057,8 +1059,9 @@ function delEdu(id){S.education=S.education.filter(e=>e.id!==id);renderEdu();upd
 // ════════════════════════════════
 //  SKILLS
 // ════════════════════════════════
-function addSkillPrompt(){
+async function addSkillPrompt(){
   const name=prompt(t('skill_prompt'));if(!name)return;
+  await maybeShowActionAd();
   const lMap={'1':'Expert','2':'Advanced','3':'Intermediate','4':'Basic'};
   const lNum=prompt(t('level_prompt'),'2');
   const level=lMap[lNum]||'Advanced';
@@ -1073,9 +1076,10 @@ function delSkill(id){S.skills=S.skills.filter(s=>s.id!==id);renderSkills();upda
 // ════════════════════════════════
 //  LANGUAGES
 // ════════════════════════════════
-function addLangPrompt(){
+async function addLangPrompt(){
   const lang=prompt(t('lang_prompt'));if(!lang)return;
   const level=prompt(t('lang_level_prompt'),'B2');if(!level)return;
+  await maybeShowActionAd();
   S.languages.push({id:Date.now(),lang,level});renderLangs();updatePreview();
 }
 function renderLangs(){
@@ -1165,6 +1169,7 @@ async function callAI(prompt, system='', maxT=600){
 async function generateSummary(){
   const input=document.getElementById('aiInput').value.trim();
   if(!input){toast(t('toast_enter_input'));return;}
+  await maybeShowAiAd();
   const btn=document.getElementById('genBtn');
   btn.disabled=true;btn.innerHTML='⏳';
   try{
@@ -1183,6 +1188,7 @@ async function generateSummary(){
 async function enhanceExp(){
   const title=v('eTitle'),company=v('eCompany'),desc=v('eDesc');
   if(!desc){toast(t('toast_enter_desc'));return;}
+  await maybeShowAiAd();
   const btn=document.querySelector('#expModal .btn-ai');
   btn.textContent='⏳';btn.disabled=true;
   try{
@@ -1199,6 +1205,7 @@ async function enhanceExp(){
 
 async function suggestSkills(){
   const job=v('jobTitle')||'professional';
+  await maybeShowAiAd();
   const btn=document.getElementById('suggestBtn');
   btn.disabled=true;btn.innerHTML='⏳';
   try{
@@ -1217,6 +1224,7 @@ function addSuggestedSkill(name,level,el){S.skills.push({id:Date.now(),name,leve
 
 async function calcATS(){
   const p=getData();
+  await maybeShowAiAd();
   try{
     const res=await callAI(
       `Analyze CV for ATS:\nTitle:${p.jobTitle}, Summary:${p.summary}, Exp:${S.experiences.length}, Skills:${S.skills.map(s=>s.name).join(',')}, Edu:${S.education.length}, Standard:${S.std}\nReturn JSON: {"score":number,"tips":["tip1","tip2","tip3"]}`,
@@ -1231,6 +1239,7 @@ async function calcATS(){
 async function improveSection(){
   const input=document.getElementById('improveInput').value.trim();
   if(!input){toast(t('toast_enter_improve'));return;}
+  await maybeShowAiAd();
   try{
     const res=await callAI(`CV improvement request: ${input}\nContext: Title: ${v('jobTitle')}, Exp entries: ${S.experiences.length}. Provide the improved text only.`,'You are a CV consultant.',500);
     const box=document.getElementById('improveResult');
@@ -1242,7 +1251,8 @@ async function improveSection(){
 // ════════════════════════════════
 //  EXPORT
 // ════════════════════════════════
-function exportPDF(){
+async function exportPDF(){
+  await maybeShowActionAd();
   updatePreview();
   const el=document.getElementById('cvDoc');
   const p=getData();
