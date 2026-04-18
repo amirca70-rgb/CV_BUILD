@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8"/>
+<meta name="google-site-verification" content="C7tb5jYFsGPRzJ68QGxbrMyC_XHXCF9MFKUH4lJmVvA" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CVPro — Professional CV Builder</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"/>
@@ -16,7 +17,7 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--dark);min-height:100vh;}
 body.ar{font-family:'Cairo',sans-serif;}
- 
+
 /* ── AD OVERLAY ── */
 .ad-overlay{
   position:fixed;inset:0;background:rgba(26,26,46,.75);backdrop-filter:blur(6px);
@@ -54,7 +55,7 @@ body.ar{font-family:'Cairo',sans-serif;}
 }
 .ad-label{font-size:.7rem;color:var(--gray);font-weight:600;}
 .ad-powered{font-size:.68rem;color:var(--gray);opacity:.6;}
- 
+
 /* ── LANG SWITCHER ── */
 .lang-switcher{
   display:flex;gap:4px;align-items:center;
@@ -65,7 +66,7 @@ body.ar{font-family:'Cairo',sans-serif;}
   font-size:0.78rem;font-weight:700;cursor:pointer;color:var(--gray);transition:all .2s;
 }
 .lbtn.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 3px 10px rgba(124,92,252,.25);}
- 
+
 /* ── TOP NAV ── */
 .topnav{
   background:var(--white);border-bottom:2px solid var(--light);
@@ -84,10 +85,10 @@ body.ar{font-family:'Cairo',sans-serif;}
 .nav-step.active{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 4px 14px rgba(124,92,252,.3);}
 .nav-step.done{background:#e8fff4;color:var(--green);}
 .nav-step .num{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:.68rem;}
- 
+
 /* ── LAYOUT ── */
 .app{display:grid;grid-template-columns:400px 1fr;height:calc(100vh - 64px);}
- 
+
 /* ── FORM PANEL ── */
 .form-panel{background:var(--white);border-inline-end:2px solid var(--light);overflow-y:auto;padding:24px;display:flex;flex-direction:column;gap:18px;}
 .step-card{display:none;}
@@ -95,7 +96,7 @@ body.ar{font-family:'Cairo',sans-serif;}
 @keyframes sIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
 .step-title{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .step-sub{font-size:.83rem;color:var(--gray);margin-top:2px;}
- 
+
 /* ── FIELDS ── */
 .field{display:flex;flex-direction:column;gap:5px;}
 .field label{font-size:.75rem;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.5px;}
@@ -108,7 +109,7 @@ body.ar{font-family:'Cairo',sans-serif;}
 .field input:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 4px rgba(124,92,252,.1);}
 .field textarea{resize:vertical;min-height:75px;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
- 
+
 /* ── STANDARD CARDS ── */
 .std-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 .std-card{border:2px solid var(--light);border-radius:13px;padding:14px;cursor:pointer;transition:all .2s;text-align:center;background:var(--bg);}
@@ -119,41 +120,41 @@ body.ar{font-family:'Cairo',sans-serif;}
 .std-card small{font-size:.7rem;color:var(--gray);}
 .std-card .chk{display:none;color:var(--purple);font-size:1rem;margin-top:3px;}
 .std-card.selected .chk{display:block;}
- 
+
 /* ── PILLS ── */
 .pills{display:flex;gap:7px;flex-wrap:wrap;}
 .pill{padding:7px 16px;border-radius:50px;border:2px solid var(--light);cursor:pointer;font-size:.8rem;font-weight:700;background:var(--bg);color:var(--gray);transition:all .2s;}
 .pill.selected{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(124,92,252,.22);}
- 
+
 /* ── COLOR SWATCHES ── */
 .swatches{display:flex;gap:7px;flex-wrap:wrap;}
 .swatch{width:30px;height:30px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s;}
 .swatch.active,.swatch:hover{border-color:var(--dark);transform:scale(1.15);}
- 
+
 /* ── SECTION BLOCK ── */
 .sec-block{background:var(--bg);border-radius:13px;padding:14px;border:2px solid var(--light);}
 .sec-block-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .sec-block-head h4{font-size:.88rem;font-weight:700;}
 .add-btn{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:6px 13px;border-radius:50px;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer;transition:transform .2s;}
 .add-btn:hover{transform:translateY(-1px);}
- 
+
 .item-pill{background:var(--white);border:1.5px solid var(--light);border-radius:9px;padding:9px 13px;display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;}
 .item-pill strong{font-size:.83rem;display:block;}
 .item-pill small{font-size:.72rem;color:var(--gray);}
 .del-btn{background:none;border:none;cursor:pointer;color:#ff6b6b;font-size:.95rem;padding:2px 5px;border-radius:5px;}
- 
+
 /* ── SKILL TAGS ── */
 .skills-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;}
 .skill-tag{background:linear-gradient(135deg,rgba(124,92,252,.1),rgba(255,107,157,.1));border:1.5px solid rgba(124,92,252,.2);border-radius:50px;padding:4px 13px;font-size:.76rem;font-weight:700;color:var(--purple);display:flex;align-items:center;gap:5px;}
 .skill-tag button{background:none;border:none;cursor:pointer;color:var(--pink);font-size:.83rem;}
- 
+
 /* ── AI BOX ── */
 .ai-box{background:linear-gradient(135deg,rgba(124,92,252,.06),rgba(255,107,157,.06));border:2px solid rgba(124,92,252,.15);border-radius:13px;padding:14px;}
 .ai-box-title{font-size:.83rem;font-weight:700;color:var(--purple);margin-bottom:9px;display:flex;align-items:center;gap:5px;}
 .ai-textarea{width:100%;border:2px solid rgba(124,92,252,.15);border-radius:9px;padding:11px;font-family:inherit;font-size:.83rem;background:var(--white);color:var(--dark);outline:none;resize:vertical;min-height:68px;direction:ltr;text-align:left;}
 .ai-textarea:focus{border-color:var(--purple);}
 .ai-result-box{background:var(--white);border:2px solid var(--green);border-radius:9px;padding:11px;font-size:.83rem;line-height:1.7;direction:ltr;text-align:left;margin-top:9px;display:none;min-height:48px;outline:none;}
- 
+
 /* ── BUTTONS ── */
 .btn-main{background:linear-gradient(135deg,var(--purple),var(--pink));border:none;color:#fff;padding:13px 26px;border-radius:50px;font-family:inherit;font-size:.93rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s;box-shadow:0 4px 14px rgba(124,92,252,.22);}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(124,92,252,.32);}
@@ -165,7 +166,7 @@ body.ar{font-family:'Cairo',sans-serif;}
 .btn-ai:disabled{opacity:.6;pointer-events:none;}
 .nav-btns{display:flex;gap:9px;}
 .nav-btns .btn-main,.nav-btns .btn-sec{flex:1;}
- 
+
 /* ── PREVIEW PANEL ── */
 .preview-panel{background:#e4e6f0;display:flex;flex-direction:column;overflow:hidden;}
 .preview-toolbar{background:var(--white);border-bottom:2px solid var(--light);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;}
@@ -179,14 +180,14 @@ body.ar{font-family:'Cairo',sans-serif;}
 .zoom-c button{width:26px;height:26px;border:2px solid var(--light);background:var(--white);border-radius:7px;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;}
 .zoom-c span{font-size:.76rem;min-width:34px;text-align:center;font-weight:700;color:var(--gray);}
 .preview-scroll{flex:1;overflow:auto;padding:28px;display:flex;justify-content:center;align-items:flex-start;}
- 
+
 /* ── CV DOCUMENT ── */
 #cvDoc{background:#fff;width:794px;min-height:1123px;box-shadow:0 20px 60px rgba(0,0,0,.15);font-family:'Arial',sans-serif;font-size:13px;direction:ltr;flex-shrink:0;transform-origin:top center;transition:transform .2s;}
 .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:14px;text-align:center;}
 .empty-icon{font-size:4.5rem;}
 .empty-state h3{font-size:1.15rem;font-weight:700;}
 .empty-state p{color:var(--gray);font-size:.87rem;max-width:260px;line-height:1.6;}
- 
+
 /* ── MODAL ── */
 .modal-bg{position:fixed;inset:0;background:rgba(26,26,46,.5);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:18px;}
 .modal-bg.open{display:flex;}
@@ -198,15 +199,15 @@ body.ar{font-family:'Cairo',sans-serif;}
 .modal-body{padding:18px 22px;display:flex;flex-direction:column;gap:13px;}
 .modal-foot{padding:13px 22px;border-top:2px solid var(--light);display:flex;gap:9px;justify-content:flex-end;}
 .modal-foot .btn-main,.modal-foot .btn-sec{width:auto;padding:10px 22px;}
- 
+
 /* ── TOAST ── */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:11px 22px;border-radius:50px;font-size:.85rem;font-weight:600;z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
- 
+
 /* ── ATS ── */
 .ats-badge{display:inline-flex;align-items:center;gap:7px;background:var(--light);border-radius:50px;padding:7px 14px;font-size:.8rem;font-weight:700;color:var(--purple);}
 .ats-num{font-size:1.05rem;font-weight:900;}
- 
+
 /* ── CV TEMPLATES ── */
 .tpl-modern .cv-head{padding:32px 34px 24px;}
 .tpl-modern .cv-name{font-size:24px;font-weight:700;color:#fff;letter-spacing:-.3px;}
@@ -234,7 +235,7 @@ body.ar{font-family:'Cairo',sans-serif;}
 .tpl-modern .edu-date{font-size:9.5px;color:#999;}
 .tpl-modern .s-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;}
 .tpl-modern .s-chip{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:4px;}
- 
+
 .tpl-classic .cv-head{padding:28px 34px 22px;border-bottom:3px solid currentColor;}
 .tpl-classic .cv-name{font-size:22px;font-weight:700;}
 .tpl-classic .cv-jobtitle{font-size:11.5px;color:#666;margin-top:3px;margin-bottom:9px;}
@@ -255,12 +256,12 @@ body.ar{font-family:'Cairo',sans-serif;}
 .tpl-classic .edu-deg{font-size:11px;font-weight:700;}
 .tpl-classic .edu-inst{font-size:10px;color:#666;}
 .tpl-classic .edu-date{font-size:9.5px;color:#999;}
- 
+
 @media(max-width:860px){.app{grid-template-columns:1fr;}.preview-panel{display:none;}}
 </style>
 </head>
 <body class="en">
- 
+
 <!-- ════════════════════════════════
      AD OVERLAY CONTAINER
      ════════════════════════════════ -->
@@ -281,7 +282,7 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <!-- TOP NAV -->
 <nav class="topnav">
   <div class="logo">⚡ CVPro</div>
@@ -300,16 +301,16 @@ body.ar{font-family:'Cairo',sans-serif;}
   </div>
   </div>
 </nav>
- 
+
 <div class="app">
- 
+
   <!-- FORM PANEL -->
   <div class="form-panel">
- 
+
     <!-- STEP 1 -->
     <div class="step-card active" id="step1">
       <div><div class="step-title" data-t="s1title"></div><div class="step-sub" data-t="s1sub"></div></div>
- 
+
       <div class="std-grid">
         <div class="std-card" onclick="selectStd(this,'europass')">
           <div class="flag">🇪🇺</div><strong>Europass</strong><small data-t="eu_desc"></small><div class="chk">✓</div>
@@ -324,7 +325,7 @@ body.ar{font-family:'Cairo',sans-serif;}
           <div class="flag">🇺🇸</div><strong>American</strong><small data-t="us_desc"></small><div class="chk">✓</div>
         </div>
       </div>
- 
+
       <div class="field">
         <label data-t="cv_lang_label"></label>
         <div class="pills">
@@ -333,7 +334,7 @@ body.ar{font-family:'Cairo',sans-serif;}
           <div class="pill" onclick="selectCVLang(this,'arabic')">🇸🇦 العربية</div>
         </div>
       </div>
- 
+
       <div class="field">
         <label data-t="color_label"></label>
         <div class="swatches">
@@ -345,7 +346,7 @@ body.ar{font-family:'Cairo',sans-serif;}
           <div class="swatch" style="background:#1a1a2e" onclick="setColor(this,'#1a1a2e')"></div>
         </div>
       </div>
- 
+
       <div class="field">
         <label data-t="tpl_label"></label>
         <div class="pills">
@@ -353,14 +354,14 @@ body.ar{font-family:'Cairo',sans-serif;}
           <div class="pill" onclick="selectTpl(this,'classic')" data-t="tpl_classic"></div>
         </div>
       </div>
- 
+
       <button class="btn-main" id="step1Next" onclick="goStep(2)" disabled data-t="next_personal"></button>
     </div>
- 
+
     <!-- STEP 2 -->
     <div class="step-card" id="step2">
       <div><div class="step-title" data-t="s2title"></div><div class="step-sub" data-t="s2sub"></div></div>
- 
+
       <div class="field-row">
         <div class="field"><label data-t="first_name"></label><input id="fName" oninput="updatePreview()"/></div>
         <div class="field"><label data-t="last_name"></label><input id="lName" oninput="updatePreview()"/></div>
@@ -372,7 +373,7 @@ body.ar{font-family:'Cairo',sans-serif;}
         <div class="field"><label data-t="location"></label><input id="loc" oninput="updatePreview()"/></div>
       </div>
       <div class="field"><label data-t="linkedin"></label><input id="linkedin" oninput="updatePreview()"/></div>
- 
+
       <div class="ai-box">
         <div class="ai-box-title">🤖 <span data-t="ai_summary_title"></span></div>
         <textarea class="ai-textarea" id="aiInput" data-t-placeholder="ai_summary_ph"></textarea>
@@ -382,17 +383,17 @@ body.ar{font-family:'Cairo',sans-serif;}
         </div>
         <div class="ai-result-box" id="summaryResult" contenteditable="true" oninput="updatePreview()"></div>
       </div>
- 
+
       <div class="nav-btns">
         <button class="btn-sec" onclick="goStep(1)" data-t="btn_back"></button>
         <button class="btn-main" onclick="goStep(3)" data-t="btn_next"></button>
       </div>
     </div>
- 
+
     <!-- STEP 3 -->
     <div class="step-card" id="step3">
       <div><div class="step-title" data-t="s3title"></div><div class="step-sub" data-t="s3sub"></div></div>
- 
+
       <div class="sec-block">
         <div class="sec-block-head"><h4 data-t="exp_section"></h4><button class="add-btn" onclick="openModal('expModal')" data-t="btn_add"></button></div>
         <div id="expList"></div>
@@ -413,36 +414,36 @@ body.ar{font-family:'Cairo',sans-serif;}
         <div class="sec-block-head"><h4 data-t="lang_section"></h4><button class="add-btn" onclick="addLangPrompt()" data-t="btn_add"></button></div>
         <div id="langList"></div>
       </div>
- 
+
       <div class="nav-btns">
         <button class="btn-sec" onclick="goStep(2)" data-t="btn_back"></button>
         <button class="btn-main" onclick="goStep(4)" data-t="btn_next"></button>
       </div>
     </div>
- 
+
     <!-- STEP 4 -->
     <div class="step-card" id="step4">
       <div><div class="step-title" data-t="s4title"></div><div class="step-sub" data-t="s4sub"></div></div>
- 
+
       <button class="btn-main" onclick="exportPDF()">📄 <span data-t="btn_export"></span></button>
       <button class="btn-sec" onclick="copyText()">📋 <span data-t="btn_copy"></span></button>
- 
+
       <div class="sec-block">
         <div class="sec-block-head"><h4 data-t="ats_title"></h4><button class="add-btn" onclick="calcATS()" data-t="btn_calc"></button></div>
         <div id="atsResult" style="font-size:.83rem;color:var(--gray);" data-t="ats_placeholder"></div>
       </div>
- 
+
       <div class="ai-box">
         <div class="ai-box-title">✨ <span data-t="improve_title"></span></div>
         <textarea class="ai-textarea" id="improveInput" data-t-placeholder="improve_ph"></textarea>
         <button class="btn-ai" style="margin-top:8px;" onclick="improveSection()">⚡ <span data-t="btn_apply"></span></button>
         <div class="ai-result-box" id="improveResult"></div>
       </div>
- 
+
       <button class="btn-sec" onclick="goStep(1)" data-t="btn_restart"></button>
     </div>
   </div>
- 
+
   <!-- PREVIEW PANEL -->
   <div class="preview-panel">
     <div class="preview-toolbar">
@@ -467,7 +468,7 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <!-- EXP MODAL -->
 <div class="modal-bg" id="expModal">
   <div class="modal">
@@ -492,7 +493,7 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <!-- EDU MODAL -->
 <div class="modal-bg" id="eduModal">
   <div class="modal">
@@ -512,7 +513,7 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <!-- UPGRADE MODAL -->
 <div class="modal-bg" id="upgradeModal">
   <div class="modal">
@@ -547,7 +548,7 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <!-- OWNER API MODAL -->
 <div class="modal-bg" id="apiModal">
   <div class="modal">
@@ -569,16 +570,16 @@ body.ar{font-family:'Cairo',sans-serif;}
     </div>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"></div>
- 
+
 <script>
 // ════════════════════════════════
 //  AD SYSTEM
 // ════════════════════════════════
 const AD_URL = 'https://lentattire.com/knzvqu2h2?key=e16c006241a60b8797ae2e81c2d6e3cc';
 const AD_SKIP_DELAY = 5; // seconds before skip button activates
- 
+
 // Ad frequency config
 const adConfig = {
   loadAdsTotal: 3,      // 3 ads on page load
@@ -588,10 +589,10 @@ const adConfig = {
   aiAdEvery: 1,         // ad before every AI call
   aiCount: 0,
 };
- 
+
 let adCountdownTimer = null;
 let adResolve = null; // promise resolver when ad closes
- 
+
 function showAd() {
   return new Promise(resolve => {
     adResolve = resolve;
@@ -599,10 +600,10 @@ function showAd() {
     const frame = document.getElementById('adFrame');
     const skipBtn = document.getElementById('adSkipBtn');
     const countdown = document.getElementById('adCountdown');
- 
+
     // Load ad into iframe
     frame.src = AD_URL;
- 
+
     // Reinject ad script to boost ad delivery
     (function(){
       const s = document.createElement('script');
@@ -610,14 +611,14 @@ function showAd() {
       s.async = true;
       document.head.appendChild(s);
     })();
- 
+
     // Reset skip button
     skipBtn.disabled = true;
     countdown.textContent = AD_SKIP_DELAY;
- 
+
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
- 
+
     // Countdown timer
     let remaining = AD_SKIP_DELAY;
     if (adCountdownTimer) clearInterval(adCountdownTimer);
@@ -632,7 +633,7 @@ function showAd() {
     }, 1000);
   });
 }
- 
+
 function closeAd() {
   const overlay = document.getElementById('adOverlay');
   const frame = document.getElementById('adFrame');
@@ -642,7 +643,7 @@ function closeAd() {
   if (adCountdownTimer) clearInterval(adCountdownTimer);
   if (adResolve) { adResolve(); adResolve = null; }
 }
- 
+
 // Show N ads sequentially on page load
 async function showLoadAds() {
   for (let i = 0; i < adConfig.loadAdsTotal; i++) {
@@ -654,7 +655,7 @@ async function showLoadAds() {
   }
   
 }
- 
+
 // Ad on every step transition
 async function maybeShowNavAd(toStep) {
   if (!adConfig.navAdSteps.includes(toStep)) return;
@@ -664,7 +665,7 @@ async function maybeShowNavAd(toStep) {
 async function maybeShowActionAd() { await showAd(); }
 // Ad before every AI call
 async function maybeShowAiAd() { await showAd(); }
- 
+
 // ════════════════════════════════
 //  TRANSLATIONS
 // ════════════════════════════════
@@ -832,7 +833,7 @@ const T = {
     lang_prompt:'Nom de la langue :', lang_level_prompt:'Niveau (A1/A2/B1/B2/C1/C2/Natif) :'
   }
 };
- 
+
 // ════════════════════════════════
 //  STATE
 // ════════════════════════════════
@@ -842,7 +843,7 @@ const S = {
   experiences: [], education: [], skills: [], languages: [],
   zoom: 0.75
 };
- 
+
 // ════════════════════════════════
 //  LANGUAGE SYSTEM
 // ════════════════════════════════
@@ -879,16 +880,16 @@ function setLang(lang) {
   });
   updatePreview();
 }
- 
+
 function t(key) { return T[S.uiLang][key] || T['en'][key] || key; }
- 
+
 // ════════════════════════════════
 //  STEP NAVIGATION (with ads)
 // ════════════════════════════════
 async function goStep(n) {
   // Show nav ad when moving to steps 3 or 4
   await maybeShowNavAd(n);
- 
+
   for(let i=1;i<=4;i++){
     document.getElementById('step'+i).classList.toggle('active', i===n);
     const ns = document.getElementById('ns'+i);
@@ -899,7 +900,7 @@ async function goStep(n) {
   if(n===4) updatePreview();
   window.scrollTo(0,0);
 }
- 
+
 // ════════════════════════════════
 //  STEP 1
 // ════════════════════════════════
@@ -928,7 +929,7 @@ function selectTpl(el, val) {
   S.tpl = val;
   updatePreview();
 }
- 
+
 // ════════════════════════════════
 //  PREVIEW
 // ════════════════════════════════
@@ -946,7 +947,7 @@ function updatePreview() {
   doc.style.transformOrigin = 'top center';
   doc.innerHTML = S.tpl==='classic' ? buildClassic(p) : buildModern(p);
 }
- 
+
 function getData() {
   return {
     fName: v('fName'), lName: v('lName'), jobTitle: v('jobTitle'),
@@ -955,7 +956,7 @@ function getData() {
   };
 }
 function v(id){ return (document.getElementById(id)||{}).value||''; }
- 
+
 function buildModern(p) {
   const c = S.color;
   const name = `${p.fName} ${p.lName}`.trim() || '—';
@@ -994,7 +995,7 @@ function buildModern(p) {
     </div>
   </div>`;
 }
- 
+
 function buildClassic(p) {
   const c = S.color;
   const name = `${p.fName} ${p.lName}`.trim() || '—';
@@ -1015,23 +1016,23 @@ function buildClassic(p) {
     ${S.skills.length?`<div class="sec-title" style="color:${c}">SKILLS</div><div class="s-chips">${S.skills.map(s=>`<span class="s-chip" style="background:${c}15;color:${c}">${s.name}</span>`).join('')}</div>`:''}
   </div>`;
 }
- 
+
 function lighten(hex){try{let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);r=Math.min(255,r+60);g=Math.min(255,g+40);b=Math.min(255,b+80);return `rgb(${r},${g},${b})`;}catch{return hex;}}
 function lvl(l){return {Expert:100,Advanced:80,Intermediate:60,Basic:40}[l]||60;}
 function fmtDate(v){if(!v)return '';if(v==='Present')return 'Present';if(v.includes('-')){const[y,m]=v.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+y;}return v;}
- 
+
 // ════════════════════════════════
 //  ZOOM
 // ════════════════════════════════
 function zoom(d){S.zoom=Math.max(.4,Math.min(1.4,S.zoom+d));document.getElementById('zoomLbl').textContent=Math.round(S.zoom*100)+'%';updatePreview();}
- 
+
 // ════════════════════════════════
 //  MODALS
 // ════════════════════════════════
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 function openApiModal(){openModal('apiModal');}
- 
+
 // ════════════════════════════════
 //  EXPERIENCE
 // ════════════════════════════════
@@ -1049,7 +1050,7 @@ function renderExp(){
 }
 function delExp(id){S.experiences=S.experiences.filter(e=>e.id!==id);renderExp();updatePreview();}
 function clearExpForm(){['eTitle','eCompany','eFrom','eTo','eDesc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});document.getElementById('eCurrent').checked=false;const ee=document.getElementById('eEnhanced');ee.style.display='none';ee.textContent='';}
- 
+
 // ════════════════════════════════
 //  EDUCATION
 // ════════════════════════════════
@@ -1064,7 +1065,7 @@ function renderEdu(){
     <div class="item-pill"><div><strong>${e.deg}</strong><small>${e.inst} · ${e.from||''}–${e.to||''}</small></div><button class="del-btn" onclick="delEdu(${e.id})">🗑</button></div>`).join('');
 }
 function delEdu(id){S.education=S.education.filter(e=>e.id!==id);renderEdu();updatePreview();}
- 
+
 // ════════════════════════════════
 //  SKILLS
 // ════════════════════════════════
@@ -1081,7 +1082,7 @@ function renderSkills(){
     <div class="skill-tag">${s.name} <span style="opacity:.6;font-size:.68em">${s.level}</span><button onclick="delSkill(${s.id})">×</button></div>`).join('');
 }
 function delSkill(id){S.skills=S.skills.filter(s=>s.id!==id);renderSkills();updatePreview();}
- 
+
 // ════════════════════════════════
 //  LANGUAGES
 // ════════════════════════════════
@@ -1096,7 +1097,7 @@ function renderLangs(){
     <div class="item-pill"><div><strong>${l.lang}</strong><small>CEFR: ${l.level}</small></div><button class="del-btn" onclick="delLang(${l.id})">🗑</button></div>`).join('');
 }
 function delLang(id){S.languages=S.languages.filter(l=>l.id!==id);renderLangs();updatePreview();}
- 
+
 // ════════════════════════════════
 //  API KEY
 // ════════════════════════════════
@@ -1106,7 +1107,7 @@ function saveApiKey(){
   if(!k){toast(t('toast_enter_key'));return;}
   localStorage.setItem('cvpro_key',k);closeModal('apiModal');toast(t('toast_key_saved'));
 }
- 
+
 // ════════════════════════════════
 //  FREEMIUM SYSTEM
 // ════════════════════════════════
@@ -1129,12 +1130,12 @@ function updateUsageBadge(){
     badge.style.color = rem > 2 ? '#1a8a4a' : '#c0392b';
   }
 }
- 
+
 // ════════════════════════════════
 //  AI ENGINE — Gemini (Freemium)
 // ════════════════════════════════
 const OWNER_KEY = 'AIzaSyDhQilYxLNkZkjgzUfKdtDtLVAIe1murbc';
- 
+
 async function callAI(prompt, system='', maxT=600){
   if(!isPremium()){
     if(getUsageCount() >= FREE_LIMIT){
@@ -1174,7 +1175,7 @@ async function callAI(prompt, system='', maxT=600){
   }
   throw new Error('Could not connect to Gemini. Please try again.');
 }
- 
+
 async function generateSummary(){
   const input=document.getElementById('aiInput').value.trim();
   if(!input){toast(t('toast_enter_input'));return;}
@@ -1193,7 +1194,7 @@ async function generateSummary(){
   }catch(e){if(e.message!=='no key')toast('⚠ '+e.message);}
   finally{btn.disabled=false;btn.innerHTML=`⚡ <span data-t="btn_generate">${t('btn_generate')}</span>`;}
 }
- 
+
 async function enhanceExp(){
   const title=v('eTitle'),company=v('eCompany'),desc=v('eDesc');
   if(!desc){toast(t('toast_enter_desc'));return;}
@@ -1211,7 +1212,7 @@ async function enhanceExp(){
   }catch(e){if(e.message!=='no key')toast('⚠ '+e.message);}
   finally{btn.textContent=`⚡ ${t('btn_enhance')}`;btn.disabled=false;}
 }
- 
+
 async function suggestSkills(){
   const job=v('jobTitle')||'professional';
   await maybeShowAiAd();
@@ -1230,7 +1231,7 @@ async function suggestSkills(){
   finally{btn.disabled=false;btn.innerHTML=`⚡ <span>${t('btn_suggest_skills')}</span>`;}
 }
 function addSuggestedSkill(name,level,el){S.skills.push({id:Date.now(),name,level});renderSkills();updatePreview();el.style.opacity='.4';el.style.pointerEvents='none';}
- 
+
 async function calcATS(){
   const p=getData();
   await maybeShowAiAd();
@@ -1244,7 +1245,7 @@ async function calcATS(){
     document.getElementById('atsResult').innerHTML=`<div class="ats-badge"><span class="ats-num" style="color:${color}">${d.score}</span>/100</div><ul style="margin-top:9px;padding-inline-start:16px;font-size:.8rem;color:var(--gray);line-height:1.9;">${(d.tips||[]).map(tp=>`<li>${tp}</li>`).join('')}</ul>`;
   }catch(e){if(e.message!=='no key')toast('⚠ '+e.message);}
 }
- 
+
 async function improveSection(){
   const input=document.getElementById('improveInput').value.trim();
   if(!input){toast(t('toast_enter_improve'));return;}
@@ -1256,7 +1257,7 @@ async function improveSection(){
     await typeText(box,res);toast('✓ Done!');
   }catch(e){if(e.message!=='no key')toast('⚠ '+e.message);}
 }
- 
+
 // ════════════════════════════════
 //  EXPORT
 // ════════════════════════════════
@@ -1271,13 +1272,13 @@ async function exportPDF(){
   html2pdf().set({margin:0,filename:name,image:{type:'jpeg',quality:.98},html2canvas:{scale:2},jsPDF:{unit:'px',format:[794,1123]}}).from(el).save().then(()=>{el.style.transform=orig;toast(t('toast_pdf'));});
 }
 function copyText(){navigator.clipboard.writeText(document.getElementById('cvDoc').innerText).then(()=>toast(t('toast_copied')));}
- 
+
 // ════════════════════════════════
 //  HELPERS
 // ════════════════════════════════
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
 async function typeText(el,text){el.textContent='';for(let i=0;i<text.length;i++){el.textContent+=text[i];if(i%8===0)await new Promise(r=>setTimeout(r,8));}}
- 
+
 // ── PREMIUM ACTIVATION ──
 function activatePremium(){
   const key = document.getElementById('premiumKeyIn').value.trim();
@@ -1292,14 +1293,14 @@ function showUpgradeModal(){
   if(msg) msg.textContent = "You've used all " + FREE_LIMIT + " free AI generations!";
   openModal('upgradeModal');
 }
- 
+
 // ════════════════════════════════
 //  INIT — show 3 ads on load, then start app
 // ════════════════════════════════
 (async function init() {
   setLang('en');
   updateUsageBadge();
- 
+
   // Periodically reinject ad boost script every 30 seconds
   setInterval(function(){
     const s = document.createElement('script');
@@ -1307,11 +1308,10 @@ function showUpgradeModal(){
     s.async = true;
     document.head.appendChild(s);
   }, 30000);
- 
+
   // Show 3 sequential ads on page load
   await showLoadAds();
 })();
 </script>
 </body>
 </html>
- 
