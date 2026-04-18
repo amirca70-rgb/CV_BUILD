@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://cv-build-seven.vercel.app/sitemap.xml
